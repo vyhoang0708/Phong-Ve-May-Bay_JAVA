@@ -3,12 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/PC/Desktop/Phong-Ve-May-Bay/QLPV/src/images/icons8_airplane_mode_on_52px.png</file>
             <file>file:/C:/Users/PC/Desktop/Phong-Ve-May-Bay/QLPV/src/connection/LoadData.java</file>
             <file>file:/C:/Users/PC/Desktop/Phong-Ve-May-Bay/QLPV/src/view/GiaoDienNhanVien.java</file>
             <file>file:/C:/Users/PC/Desktop/Phong-Ve-May-Bay/QLPV/src/view/GiaoDienKhachHang.java</file>
             <file>file:/C:/Users/PC/Desktop/Phong-Ve-May-Bay/QLPV/src/view/DangNhap.java</file>
             <file>file:/C:/Users/PC/Desktop/Phong-Ve-May-Bay/QLPV/src/connection/DataConnection.java</file>
+=======
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Phong-Ve-May-Bay/QLPV/src/view/DangNhap.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Phong-Ve-May-Bay/QLPV/src/view/GiaoDienDangKy.java</file>
+>>>>>>> d880351bd450bd48204b63c37bb7d6b6204e0dc9
         </group>
     </open-files>
 </project-private>

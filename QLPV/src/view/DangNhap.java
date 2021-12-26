@@ -34,7 +34,7 @@ public class DangNhap extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         ipName = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        btn = new javax.swing.JLabel();
         ipPass = new javax.swing.JPasswordField();
         baoLoi = new javax.swing.JLabel();
 
@@ -55,8 +55,8 @@ public class DangNhap extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel3.setText("<HTML><u>Đăng ký</u></HTML>");
+        btn.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        btn.setText("<HTML><u>Đăng ký</u></HTML>");
 
         baoLoi.setForeground(new java.awt.Color(255, 51, 51));
 
@@ -71,7 +71,7 @@ public class DangNhap extends javax.swing.JFrame {
                         .addComponent(btnLogin))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(108, 108, 108)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,7 +97,7 @@ public class DangNhap extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnLogin)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(baoLoi, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                 .addGap(6, 6, 6))
@@ -127,7 +127,7 @@ public class DangNhap extends javax.swing.JFrame {
             if(tk.getMatKhau().equals(pass)){
                if(tk.getLoaiTaiKhoan().equals("admin"))
                {
-                   new GiaoDienNhanVien().setVisible(true);
+                   new GiaoDienKhachHang().setVisible(true);
                    this.dispose();
                }
                else{
@@ -178,11 +178,11 @@ public class DangNhap extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel baoLoi;
+    private javax.swing.JLabel btn;
     private javax.swing.JButton btnLogin;
     private javax.swing.JTextField ipName;
     private javax.swing.JPasswordField ipPass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

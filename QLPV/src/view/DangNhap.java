@@ -34,7 +34,7 @@ public class DangNhap extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         ipName = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        newDangKi = new javax.swing.JLabel();
         ipPass = new javax.swing.JPasswordField();
         baoLoi = new javax.swing.JLabel();
 
@@ -55,8 +55,13 @@ public class DangNhap extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel3.setText("<HTML><u>Đăng ký</u></HTML>");
+        newDangKi.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        newDangKi.setText("<HTML><u>Đăng ký</u></HTML>");
+        newDangKi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                newDangKiMousePressed(evt);
+            }
+        });
 
         baoLoi.setForeground(new java.awt.Color(255, 51, 51));
 
@@ -71,7 +76,7 @@ public class DangNhap extends javax.swing.JFrame {
                         .addComponent(btnLogin))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(108, 108, 108)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(newDangKi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,7 +102,7 @@ public class DangNhap extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnLogin)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(newDangKi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(baoLoi, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                 .addGap(6, 6, 6))
@@ -141,6 +146,12 @@ public class DangNhap extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    private void newDangKiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newDangKiMousePressed
+        // TODO add your handling code here:
+        new GiaoDienDangKy().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_newDangKiMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -183,6 +194,6 @@ public class DangNhap extends javax.swing.JFrame {
     private javax.swing.JPasswordField ipPass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel newDangKi;
     // End of variables declaration//GEN-END:variables
 }

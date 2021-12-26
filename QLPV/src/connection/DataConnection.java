@@ -34,7 +34,7 @@ public class DataConnection {
         String url = "jdbc:sqlserver://;databaseName=QLPV";
 
         String user = "sa";
-        String pass = "1";
+        String pass = "18";
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, user, pass);

@@ -8,6 +8,7 @@ import connection.LoadData;
 import controller.Controller;
 import java.util.regex.Matcher;
 import model.TaiKhoan;
+import view.DangNhap;
 
 /**
  *
@@ -57,6 +58,8 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
         ipXacThuc = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Đăng Kí");
+        setLocation(new java.awt.Point(600, 200));
 
         jLabel1.setText("Tên Đăng Nhập");
 

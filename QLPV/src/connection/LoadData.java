@@ -1,6 +1,5 @@
 package connection;
 
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -13,10 +12,11 @@ import java.util.logging.Logger;
 import model.TaiKhoan;
 import controller.Controller;
 import java.util.concurrent.ConcurrentHashMap;
+import model.*;
         
 /**
  *
- * @author conghau
+ * @author PC
  */
 public class LoadData {
     public static void loadTableTaiKhoan() {
@@ -34,15 +34,41 @@ public class LoadData {
             Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public static void loadTableDuongBay() {
+        ResultSet rs = DataConnection.retrieveData("select * from dbo.DUONGBAY");
+        try {
+            while (rs.next()) {
+                DuongBay duongBay = new DuongBay(
+                        rs.getString(1).trim(),
+                        rs.getString(2).trim(),
+                        rs.getString(3).trim(),
+                        rs.getInt(4));
 
-   
-    //
+                Controller.arrayListDuongBay.add(duongBay);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     public static void loadTableSanBay() {
+        ResultSet rs = DataConnection.retrieveData("select * from dbo.SANBAY");
+        try {
+            while (rs.next()) {
+                SanBay sanBay = new SanBay(
+                        rs.getString(1).trim(),
+                        rs.getString(2).trim(),
+                        rs.getString(3).trim());
+                Controller.arrayListSanBay.add(sanBay);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public LoadData() {
-        
-       
-        loadTableTaiKhoan();
-        
-
+        controller.Controller.arrayListSanBay.removeAll(controller.Controller.arrayListSanBay);
+        loadTableTaiKhoan();  
+        loadTableSanBay(); 
     }
 
 }

@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author conghau
+ * @author PC
  */
 public class DataConnection {
 
@@ -31,7 +31,7 @@ public class DataConnection {
     }
 
     public static void createStatement() {
-        String url = "jdbc:sqlserver://;databaseName=QLPV";
+        String url = "jdbc:sqlserver://ANH-JUN\\SQLEXPRESS:1433;databaseName=QLPV";
 
         String user = "sa";
         String pass = "18";

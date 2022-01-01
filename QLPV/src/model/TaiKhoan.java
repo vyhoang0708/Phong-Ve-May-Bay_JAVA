@@ -11,18 +11,15 @@ public class TaiKhoan {
     private String loaiTaiKhoan;
    
 
+    public TaiKhoan() {
+    }
+
     public TaiKhoan(String tenDangNhap, String matKhau, String loaiTaiKhoan) {
         this.tenDangNhap = tenDangNhap;
         this.matKhau = matKhau;
         this.loaiTaiKhoan = loaiTaiKhoan;
        
     }
-
-    public TaiKhoan() {
-    }
-
-   
-  
 
     public String getTenDangNhap() {
         return tenDangNhap;

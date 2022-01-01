@@ -19,6 +19,8 @@ public class DangNhap extends javax.swing.JFrame {
      */
     public DangNhap() {
         initComponents();
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -49,6 +51,8 @@ public class DangNhap extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Tên Đăng Nhập");
 
+        ipName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
         btnLogin.setText("Đăng Nhập");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +67,8 @@ public class DangNhap extends javax.swing.JFrame {
                 btnMousePressed(evt);
             }
         });
+
+        ipPass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         baoLoi.setForeground(new java.awt.Color(255, 51, 51));
 
@@ -87,7 +93,7 @@ public class DangNhap extends javax.swing.JFrame {
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(ipPass, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(baoLoi, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,8 +107,8 @@ public class DangNhap extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addComponent(ipPass, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnLogin)
-                .addGap(18, 18, 18)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(baoLoi, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
@@ -133,11 +139,11 @@ public class DangNhap extends javax.swing.JFrame {
             if(tk.getMatKhau().equals(pass)){
                if(tk.getLoaiTaiKhoan().equals("admin"))
                {
-                   new GiaoDienNhanVien().setVisible(true);
+                   new GiaoDienQuanLy().setVisible(true);
                    this.dispose();
                }
                else{
-                   new GiaoDienNhanVien().setVisible(true);
+                   new GiaoDienQuanLy().setVisible(true);
                    this.dispose();
                }
             }
@@ -164,7 +170,7 @@ public class DangNhap extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -178,6 +184,7 @@ public class DangNhap extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+       
         //</editor-fold>
 
         /* Create and display the form */

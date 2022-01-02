@@ -3,14 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/PC/Desktop/Phong-Ve-May-Bay%20-%20Copy/QLPV/src/view/GiaoDienQuanLy.java</file>
-            <file>file:/C:/Users/PC/Desktop/Phong-Ve-May-Bay%20-%20Copy/QLPV/src/view/GiaoDienSanBay.java</file>
-            <file>file:/C:/Users/PC/Desktop/Phong-Ve-May-Bay%20-%20Copy/QLPV/src/connection/LoadData.java</file>
-            <file>file:/C:/Users/PC/Desktop/Phong-Ve-May-Bay%20-%20Copy/QLPV/src/connection/UpdateData.java</file>
-            <file>file:/C:/Users/PC/Desktop/Phong-Ve-May-Bay%20-%20Copy/QLPV/src/connection/DeleteData.java</file>
-            <file>file:/C:/Users/PC/Desktop/Phong-Ve-May-Bay%20-%20Copy/QLPV/src/connection/InsertData.java</file>
-            <file>file:/C:/Users/PC/Desktop/Phong-Ve-May-Bay%20-%20Copy/QLPV/src/view/GiaoDienNhanVien.java</file>
-            <file>file:/C:/Users/PC/Desktop/Phong-Ve-May-Bay%20-%20Copy/QLPV/src/view/GiaoDienKhachHang.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Phong-Ve-May-Bay/QLPV/src/connection/DataConnection.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Phong-Ve-May-Bay/QLPV/src/view/GiaoDienSanBay.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Phong-Ve-May-Bay/QLPV/src/view/GiaoDienChuyenBay.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Phong-Ve-May-Bay/QLPV/src/view/GiaoDienTimVe.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Phong-Ve-May-Bay/QLPV/src/view/GiaoDienKhachHang.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Phong-Ve-May-Bay/QLPV/src/view/GiaoDienMayBay.java</file>
         </group>
     </open-files>
 </project-private>

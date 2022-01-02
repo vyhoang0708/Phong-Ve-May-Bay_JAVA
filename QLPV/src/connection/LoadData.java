@@ -67,8 +67,11 @@ public class LoadData {
 
     public LoadData() {
         controller.Controller.arrayListSanBay.removeAll(controller.Controller.arrayListSanBay);
+        controller.Controller.arrayListDuongBay.removeAll(controller.Controller.arrayListDuongBay);
+        controller.Controller.arrayListTaiKhoan.removeAll(controller.Controller.arrayListTaiKhoan);
         loadTableTaiKhoan();  
         loadTableSanBay(); 
+        loadTableDuongBay(); 
     }
 
 }

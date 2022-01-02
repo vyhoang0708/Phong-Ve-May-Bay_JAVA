@@ -69,5 +69,25 @@ public class InsertData {
         return false;
     }
 
-    
+    public static boolean insertDuongBay(DuongBay db) {
+        String sqlCommand = "insert into dbo.DUONGBAY values(?,?,?,?)";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, db.getMaDuongBay());
+            ps.setString(2, db.getMaSanBayDi());
+            ps.setString(3, db.getMasanBayDen());
+            ps.setInt(4, db.getKhoangCach());
+
+            if (ps.executeUpdate() > 0) {
+                System.out.println("thêm đường bay thành công");
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("thêm đường bay thất bại");
+        return false;
+    }
 }

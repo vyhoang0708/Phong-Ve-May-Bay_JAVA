@@ -14,7 +14,47 @@ public class DuongBay {
      private String masanBayDen;
      private int khoangCach;
 
-    public DuongBay(String trim, String trim0, String trim1, int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public DuongBay() {
     }
+
+    public DuongBay(String maDuongBay, String maSanBayDi, String masanBayDen, int khoangCach) {
+        this.maDuongBay = maDuongBay;
+        this.maSanBayDi = maSanBayDi;
+        this.masanBayDen = masanBayDen;
+        this.khoangCach = khoangCach;
+    }
+
+    public String getMaDuongBay() {
+        return maDuongBay;
+    }
+
+    public void setMaDuongBay(String maDuongBay) {
+        this.maDuongBay = maDuongBay;
+    }
+
+    public String getMaSanBayDi() {
+        return maSanBayDi;
+    }
+
+    public void setMaSanBayDi(String maSanBayDi) {
+        this.maSanBayDi = maSanBayDi;
+    }
+
+    public String getMasanBayDen() {
+        return masanBayDen;
+    }
+
+    public void setMasanBayDen(String masanBayDen) {
+        this.masanBayDen = masanBayDen;
+    }
+
+    public int getKhoangCach() {
+        return khoangCach;
+    }
+
+    public void setKhoangCach(int khoangCach) {
+        this.khoangCach = khoangCach;
+    }
+
+  
 }

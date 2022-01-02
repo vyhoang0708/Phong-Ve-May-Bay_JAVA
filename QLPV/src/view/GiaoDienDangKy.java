@@ -341,6 +341,8 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
         
         connection.InsertData.insertTaiKhoan(tk);
         connection.InsertData.insertKhachHang(kh);
+        new DangNhap().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ipSDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ipSDTMouseClicked

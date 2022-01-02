@@ -180,7 +180,7 @@ public class GiaoDienSuaThongTin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ipThoatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ipThoatMousePressed
-        new GiaoDienTimVe().setVisible(true);
+        new GiaoDienKhachHang().setVisible(true);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_ipThoatMousePressed
 

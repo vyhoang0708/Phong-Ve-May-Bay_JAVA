@@ -218,7 +218,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMayBayActionPerformed
 
     private void btnTimChuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimChuyenActionPerformed
-           new GiaoDienTimVe().setVisible(true);
+           new GiaoDienKhachHang().setVisible(true);
            this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTimChuyenActionPerformed

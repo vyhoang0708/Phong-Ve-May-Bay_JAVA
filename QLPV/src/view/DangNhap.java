@@ -137,13 +137,14 @@ public class DangNhap extends javax.swing.JFrame {
         else{
             TaiKhoan tk= Controller.arrayListTaiKhoan.get(index);
             if(tk.getMatKhau().equals(pass)){
+                Controller.tk = tk;
                if(tk.getLoaiTaiKhoan().equals("admin"))
                {
                    new GiaoDienQuanLy().setVisible(true);
                    this.dispose();
                }
                else{
-                   new GiaoDienQuanLy().setVisible(true);
+                   new GiaoDienKhachHang().setVisible(true);
                    this.dispose();
                }
             }

@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import model.DuongBay;
 import view.GiaoDienNhanVien;
 import static controller.Controller.*;
+import javax.swing.JOptionPane;
 import model.SanBay;
 import model.TaiKhoan;
 
@@ -72,6 +73,11 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
         baoLoi = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Danh Sách Đường Bay");
@@ -118,10 +124,20 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
         jButtonEdit.setBackground(new java.awt.Color(255, 255, 255));
         jButtonEdit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonEdit.setText("Sưả");
+        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditActionPerformed(evt);
+            }
+        });
 
         jButtonDel.setBackground(new java.awt.Color(255, 255, 255));
         jButtonDel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonDel.setText("Xóa");
+        jButtonDel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDelActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Sân Bay Đi");
@@ -146,8 +162,18 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
         jButtonCanncel.setText("Hủy");
         jButtonCanncel.setEnabled(false);
         jButtonCanncel.setFocusCycleRoot(true);
+        jButtonCanncel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCanncelActionPerformed(evt);
+            }
+        });
 
         jTextField5.setEnabled(false);
+        jTextField5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField5MouseClicked(evt);
+            }
+        });
 
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -166,6 +192,8 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
                 jComboBox2ActionPerformed(evt);
             }
         });
+
+        baoLoi.setForeground(new java.awt.Color(255, 51, 51));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -199,25 +227,25 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
                                             .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jTextField5))
                                         .addGap(47, 47, 47))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(46, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonAdd)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonEdit)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonDel)
-                                .addGap(31, 31, 31))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(19, 19, 19)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jButtonAdd)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(36, 36, 36)
-                                        .addComponent(baoLoi, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(46, Short.MAX_VALUE))))))
+                                        .addComponent(jButtonEdit)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButtonDel)
+                                        .addGap(31, 31, 31))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(baoLoi, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap())))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,8 +303,10 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
         String sb1=controller.Controller.arrayListSanBay.get(jComboBox1.getSelectedIndex()).getMaSanBay();
         String sb2=controller.Controller.arrayListSanBay.get(jComboBox2.getSelectedIndex()).getMaSanBay();
         if(sb1.equals(sb2)){
-            baoLoi.setText("San bay di va den khong duoc trung nhau!");
+            baoLoi.setText("Đường bay không hợp lệ!");
         }
+        else if(jTextField5.getText().equals(""))
+            baoLoi.setText("Vui lòng nhập đầy đủ thông tin đường bay!");
         else{
             DuongBay db= new DuongBay(sb1.concat(sb2),sb1,sb2,Integer.parseInt(jTextField5.getText()));
             connection.InsertData.insertDuongBay(db);
@@ -286,6 +316,8 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
             jTextField5.setEnabled(false);
             jButtonSave.setEnabled(false);
             jButtonCanncel.setEnabled(false);
+            jButtonEdit.setEnabled(true);
+            jButtonDel.setEnabled(true);
             jTable1.getSelectionModel().setSelectionInterval(jTable1.getRowCount()-1,jTable1.getRowCount()-1);
 
         }
@@ -305,10 +337,14 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
         jTextField5.setEnabled(true);
         jButtonSave.setEnabled(true);
         jButtonCanncel.setEnabled(true);
+        jTable1.setEnabled(false);
+        jButtonEdit.setEnabled(false);
+        jButtonDel.setEnabled(false);
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
+        baoLoi.setText("");
         for (SanBay sb: arrayListSanBay) {
             if(sb.getMaSanBay().equals(jTable1.getValueAt(jTable1.getSelectedRow(), 1)))
                 jComboBox1.setSelectedIndex(arrayListSanBay.indexOf(sb));
@@ -318,6 +354,61 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
    
         jTextField5.setText(String.valueOf(arrayListDuongBay.get(jTable1.getSelectedRow()).getKhoangCach()));
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        baoLoi.setText("");// TODO add your handling code here:
+    }//GEN-LAST:event_formMouseClicked
+
+    private void jButtonCanncelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCanncelActionPerformed
+        baoLoi.setText("");
+        jTable1.setEnabled(true);
+        jComboBox1.setEnabled(false);
+        jComboBox1.setSelectedIndex(0);
+        jComboBox2.setEnabled(false);
+        jComboBox2.setSelectedIndex(0);
+        jTextField5.setText("");
+        jTextField5.setEnabled(false);
+        jButtonEdit.setEnabled(true);
+        jButtonDel.setEnabled(true);
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCanncelActionPerformed
+
+    private void jButtonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelActionPerformed
+         baoLoi.setText("");
+          if(jTable1.getSelectedRow()==-1){
+            baoLoi.setText("Vui lòng chọn đường bay");}
+        else
+        {
+          int confirmed = JOptionPane.showConfirmDialog(null,
+                        "Xác Nhận Xóa Đường Bay?", "Xác nhận",JOptionPane.YES_NO_OPTION);
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                     jTextField5.setText("");
+                     connection.DeleteData.deleteSanBay((String) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
+                     showData();
+                } 
+        }
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDelActionPerformed
+
+    private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
+        baoLoi.setText("");// TODO add your handling code here:
+        if(jTable1.getSelectedRow() == -1)
+            baoLoi.setText("Vui lòng chọn đường bay.");
+        else
+        {
+            jTable1.setEnabled(true);
+            jTextField5.setEnabled(true);
+            jButtonSave.setEnabled(true);
+            jButtonCanncel.setEnabled(true);
+            
+        }
+            
+    }//GEN-LAST:event_jButtonEditActionPerformed
+
+    private void jTextField5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField5MouseClicked
+        baoLoi.setText("");// TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5MouseClicked
 
     /**
      * @param args the command line arguments

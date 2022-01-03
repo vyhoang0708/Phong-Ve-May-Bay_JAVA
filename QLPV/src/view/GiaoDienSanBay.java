@@ -311,6 +311,8 @@ public class GiaoDienSanBay extends javax.swing.JFrame {
            jTable1.clearSelection();
         jButtonSave.setEnabled(true);
          jButtonCancel.setEnabled(true);
+         jButtonEdit.setEnabled(false);
+         jButtonDelete.setEnabled(false);
     }//GEN-LAST:event_jButtonADDActionPerformed
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
@@ -318,7 +320,11 @@ public class GiaoDienSanBay extends javax.swing.JFrame {
         SanBay sb= new SanBay(jTextMaSB.getText(),jTextName.getText(),jTextDiaDiem.getText());
         int row = jTable1.getSelectedRow();
         if(jTextMaSB.getText().equals("") || jTextName.getText().equals("") || jTextDiaDiem.getText().equals(""))
+            {
                  baoloisb.setText("Thông tin không được để trống");
+                 jButtonEdit.setEnabled(false);
+                 jButtonDelete.setEnabled(false);
+            }     
         else if(jTable1.getSelectedRow()==-1){
             controller.Controller.arrayListSanBay.add(sb);
             jTable1.setEnabled(true);
@@ -329,6 +335,8 @@ public class GiaoDienSanBay extends javax.swing.JFrame {
             jTextName.setEnabled(false);
             jButtonSave.setEnabled(false);
             jButtonCancel.setEnabled(false);
+            jButtonEdit.setEnabled(true);
+            jButtonDelete.setEnabled(true);
             connection.InsertData.insertSanBay(sb);
             baoloisb.setText("Thêm sân bay thành công");
         }
@@ -401,6 +409,9 @@ public class GiaoDienSanBay extends javax.swing.JFrame {
          jTextMaSB.setEnabled(false);
          jTextDiaDiem.setEnabled(false);
          jTextName.setEnabled(false);
+         jButtonSave.setEnabled(false);
+         jButtonEdit.setEnabled(true);
+         jButtonDelete.setEnabled(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCancelActionPerformed
    

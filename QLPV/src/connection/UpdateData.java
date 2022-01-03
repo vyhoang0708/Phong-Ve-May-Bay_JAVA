@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.MayBay;
 import model.SanBay;
 
 /**
@@ -32,6 +33,26 @@ public class UpdateData {
             Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("sửa sân bay thất bại");
+        return false;
+    }
+     
+    public static boolean updateMayBay(MayBay mayBay) {
+        String sqlCommand = "update dbo.MAYBAY set HANGBAY=?, SOGHE=?"
+                + " where SHMB=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+
+            ps.setString(1, mayBay.getHangBay());
+            ps.setInt(2, mayBay.getSoGhe());
+            ps.setString(3, mayBay.getSHMB());
+
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("sửa máy bay thất bại");
         return false;
     }
 }

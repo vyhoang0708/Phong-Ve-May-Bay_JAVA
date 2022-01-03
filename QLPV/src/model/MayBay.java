@@ -11,12 +11,12 @@ package model;
 public class MayBay {
     private String SHMB;
     private String hangBay;
-    private String soGhe;
+    private int soGhe;
 
     public MayBay() {
     }
 
-    public MayBay(String SHMB, String hangBay, String soGhe) {
+    public MayBay(String SHMB, String hangBay, int soGhe) {
         this.SHMB = SHMB;
         this.hangBay = hangBay;
         this.soGhe = soGhe;
@@ -38,11 +38,11 @@ public class MayBay {
         this.hangBay = hangBay;
     }
 
-    public String getSoGhe() {
+    public int getSoGhe() {
         return soGhe;
     }
 
-    public void setSoGhe(String soGhe) {
+    public void setSoGhe(int soGhe) {
         this.soGhe = soGhe;
     }
     

@@ -12,12 +12,12 @@ public class NhanVien {
      private String SDT;
     private String tenNhanVien;
     private String tenDangNhap;
-    private String luong;
+    private int luong;
 
     public NhanVien() {
     }
 
-    public NhanVien(String SDT, String tenNhanVien, String tenDangNhap, String luong) {
+    public NhanVien(String SDT, String tenNhanVien, String tenDangNhap,int luong) {
         this.SDT = SDT;
         this.tenNhanVien = tenNhanVien;
         this.tenDangNhap = tenDangNhap;
@@ -48,11 +48,11 @@ public class NhanVien {
         this.tenDangNhap = tenDangNhap;
     }
 
-    public String getLuong() {
+    public int getLuong() {
         return luong;
     }
 
-    public void setLuong(String luong) {
+    public void setLuong(int luong) {
         this.luong = luong;
     }
     

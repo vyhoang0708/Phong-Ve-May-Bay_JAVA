@@ -15,24 +15,23 @@ import java.util.ArrayList;
 public class ChuyenBay {
     private String maChuyenBay;
     private String SHMB;
-    private DuongBay duongBay;
+    private DuongBay maDuongBay;
     private Date ngayBay;
     private Time gioBay;
     private int trangThai;
-    private int khoangCach;
     private ArrayList<Ghe> arrayListGhe = new ArrayList<Ghe>();
 
     public ChuyenBay() {
     }
 
-    public ChuyenBay(String maChuyenBay, String SHMB, DuongBay duongBay, Date ngayBay, Time gioBay,int trangThai, int khoangCach) {
+    public ChuyenBay(String maChuyenBay, String SHMB,DuongBay duongBay, Date ngayBay, Time gioBay,int trangThai) {
         this.maChuyenBay = maChuyenBay;
         this.SHMB = SHMB;
-        this.duongBay = duongBay;
+        this.maDuongBay = duongBay;
         this.ngayBay = ngayBay;
         this.gioBay = gioBay;
         this.trangThai = trangThai;
-        this.khoangCach = khoangCach;
+        
     }
 
     public String getMaChuyenBay() {
@@ -52,11 +51,11 @@ public class ChuyenBay {
     }
 
     public DuongBay getDuongBay() {
-        return duongBay;
+        return maDuongBay;
     }
 
     public void setDuongBay(DuongBay duongBay) {
-        this.duongBay = duongBay;
+        this.maDuongBay = duongBay;
     }
 
     public Date getNgayBay() {
@@ -83,20 +82,20 @@ public class ChuyenBay {
         this.trangThai = trangThai  ;
     }
 
-    public int getKhoangCach() {
-        return khoangCach;
-    }
-
-    public void setKhoangCach(int khoangCach) {
-        this.khoangCach = khoangCach;
-    }
-
     public ArrayList<Ghe> getArrayListGhe() {
         return arrayListGhe;
     }
 
     public void setArrayListGhe(ArrayList<Ghe> arrayListGhe) {
         this.arrayListGhe = arrayListGhe;
+    }
+    
+     public static DuongBay timDuongBay(String maDuongBay) {
+         for (DuongBay db: controller.Controller.arrayListDuongBay) {
+             if(db.getMaDuongBay().equals(maDuongBay))
+                 return db;
+         }
+        return null;
     }
     
     

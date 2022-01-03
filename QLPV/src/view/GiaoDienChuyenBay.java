@@ -4,6 +4,12 @@
  */
 package view;
 
+import connection.LoadData;
+import java.awt.Color;
+import javax.swing.table.DefaultTableModel;
+import model.ChuyenBay;
+import model.MayBay;
+
 /**
  *
  * @author PC
@@ -13,10 +19,25 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
     /**
      * Creates new form GiaoDienChuyenBay
      */
+    private DefaultTableModel table;
+
     public GiaoDienChuyenBay() {
         initComponents();
+        table = (DefaultTableModel) jTable1.getModel();
+        showData();
+        jTable1.setDefaultEditor(Object.class, null);;
+        jTable1.setSelectionBackground(Color.RED);
+        jTable1.setSelectionMode(0);
+        
+        
     }
-
+    private void showData(){
+        new LoadData();
+        table.setRowCount(0);
+        for (ChuyenBay cb: controller.Controller.arrayListChuyenBay) {
+           table.addRow(new Object[]{cb.getMaChuyenBay(),cb.getDuongBay().getMaSanBayDi()+"->"+cb.getDuongBay().getMasanBayDen(),cb.getSHMB(),cb.getNgayBay()+" " +cb.getGioBay(),cb.getTrangThai()});
+    }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,9 +69,11 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
 
             },
             new String [] {
-                "<HTML><b>Mã Chuyến Bay</b></HTML>", "<HTML><b>SHMB</b></HTML>", "<HTML><b>Thời Gian</b></HTML>", "<HTML><b>Đường Bay</b></HTML>", "<HTML><b>Trạng Thái</b></HTML>", "<HTML><b>Danh Sách Vé</b></HTML>"
+                "<HTML><b>Mã Chuyến Bay</b></HTML>", "<HTML><b>Đường Bay</b></HTML>", "<HTML><b>SHMB</b></HTML>", "<HTML><b>Thời Gian</b></HTML>", "<HTML><b>Trạng Thái</b></HTML>"
             }
         ));
+        jTable1.setPreferredSize(new java.awt.Dimension(450, 300));
+        jTable1.setRowHeight(30);
         jScrollPane1.setViewportView(jTable1);
 
         jLabel3.setText("San Bay Den");
@@ -111,8 +134,8 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(17, 17, 17)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2)

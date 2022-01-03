@@ -31,4 +31,22 @@ public class DeleteData {
         System.out.println("xóa sân bay thất bại");
         return false;
     }
+       
+        public static boolean deleteMayBay(String SHMB) {
+        String sqlCommand = "delete from dbo.MAYBAY where SHMB=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, SHMB);
+            if (ps.executeUpdate() > 0) {
+                System.out.println("Xóa may bay thành công");
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("xóa sân bay thất bại");
+        return false;
+    }
 }

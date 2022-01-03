@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+import connection.LoadData;
 import  controller.*;
 
 /**
@@ -19,6 +20,11 @@ public class GiaoDienKhachHang extends javax.swing.JFrame {
        if(Controller.tk.getLoaiTaiKhoan().equals("guest")){
             jLabelName.setText(Controller.tk.getTenDangNhap());
        }
+       new LoadData();
+        for (model.SanBay sb : controller.Controller.arrayListSanBay) {
+            jComboBox1.addItem(sb.getMaSanBay().trim() + "-" + sb.getTenSanBay());
+            jComboBox2.addItem(sb.getMaSanBay().trim() + "-" + sb.getTenSanBay());
+        }
     }
 
     /**
@@ -140,7 +146,7 @@ public class GiaoDienKhachHang extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         jLabel14.setText("0-11 tuổi");
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 9, 1));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9, 1));
 
         jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0, 0, 9, 1));
 

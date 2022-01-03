@@ -27,6 +27,28 @@ public class InsertData {
         }
 
     }
+     public static boolean insertNhanVien(NhanVien nv) {
+        String sqlCommand = "insert into dbo.NHANVIEN values(?,?,?,?)";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, nv.getSDT());
+            ps.setString(2, nv.getTenNhanVien());
+            ps.setString(3, nv.getTenDangNhap());
+            ps.setInt(5, nv.getLuong());
+
+            if (ps.executeUpdate() > 0) {
+                System.out.println("thêm nhân viên thành công");
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("thêm nhân viên thất bại");
+        return false;
+    }
+     
     public static boolean insertKhachHang(KhachHang kh){
         String sqlCommand = "insert into dbo.KhACHHANG values(?,?,?,?,?)";
         try{
@@ -66,6 +88,26 @@ public class InsertData {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("thêm sân bay thất bại");
+        return false;
+    }
+    public static boolean insertMayBay(MayBay mb) {
+        String sqlCommand = "insert into dbo.MAYBAY values(?,?,?)";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, mb.getSHMB());
+            ps.setString(2, mb.getHangBay());
+            ps.setInt(3, mb.getSoGhe());
+
+            if (ps.executeUpdate() > 0) {
+                System.out.println("thêm máy bay thành công");
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("thêm máy bay thất bại");
         return false;
     }
 

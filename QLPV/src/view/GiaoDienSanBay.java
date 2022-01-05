@@ -304,15 +304,15 @@ public class GiaoDienSanBay extends javax.swing.JFrame {
         jTextMaSB.setText("");
         jTextDiaDiem.setText("");
         jTextName.setText("");
-         jTextMaSB.setEnabled(true);
-          jTextDiaDiem.setEnabled(true);
-           jTextName.setEnabled(true);
-           jTable1.setEnabled(false);
-           jTable1.clearSelection();
+        jTextMaSB.setEnabled(true);
+        jTextDiaDiem.setEnabled(true);
+        jTextName.setEnabled(true);
+        jTable1.setEnabled(false);
+        jTable1.clearSelection();
         jButtonSave.setEnabled(true);
-         jButtonCancel.setEnabled(true);
-         jButtonEdit.setEnabled(false);
-         jButtonDelete.setEnabled(false);
+        jButtonCancel.setEnabled(true);
+        jButtonEdit.setEnabled(false);
+        jButtonDelete.setEnabled(false);
     }//GEN-LAST:event_jButtonADDActionPerformed
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
@@ -321,9 +321,9 @@ public class GiaoDienSanBay extends javax.swing.JFrame {
         int row = jTable1.getSelectedRow();
         if(jTextMaSB.getText().equals("") || jTextName.getText().equals("") || jTextDiaDiem.getText().equals(""))
             {
-                 baoloisb.setText("Thông tin không được để trống");
-                 jButtonEdit.setEnabled(false);
-                 jButtonDelete.setEnabled(false);
+                baoloisb.setText("Thông tin không được để trống");
+                jButtonEdit.setEnabled(false);
+                jButtonDelete.setEnabled(false);
             }     
         else if(jTable1.getSelectedRow()==-1){
             controller.Controller.arrayListSanBay.add(sb);
@@ -342,9 +342,9 @@ public class GiaoDienSanBay extends javax.swing.JFrame {
         }
         else{
             System.out.println("Alo");
-          connection.UpdateData.updateSanBay(sb);
-          loadbang();
-          jTable1.getSelectionModel().setSelectionInterval(row, row);
+            connection.UpdateData.updateSanBay(sb);
+            loadbang();
+            jTable1.getSelectionModel().setSelectionInterval(row, row);
             jTextDiaDiem.setEnabled(false);
             jTextName.setEnabled(false);
             jButtonSave.setEnabled(false);
@@ -360,11 +360,11 @@ public class GiaoDienSanBay extends javax.swing.JFrame {
             baoloisb.setText("Vui lòng chọn sân bay");}
         else
         {
-        jTable1.setEnabled(true); 
-        jTextName.setEnabled(true);
-        jTextDiaDiem.setEnabled(true);
-        jButtonSave.setEnabled(true);
-        jButtonCancel.setEnabled(true);
+            jTable1.setEnabled(true); 
+            jTextName.setEnabled(true);
+            jTextDiaDiem.setEnabled(true);
+            jButtonSave.setEnabled(true);
+            jButtonCancel.setEnabled(true);
         }
        
       
@@ -406,12 +406,12 @@ public class GiaoDienSanBay extends javax.swing.JFrame {
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         baoloisb.setText("");
         jTable1.setEnabled(true);
-         jTextMaSB.setEnabled(false);
-         jTextDiaDiem.setEnabled(false);
-         jTextName.setEnabled(false);
-         jButtonSave.setEnabled(false);
-         jButtonEdit.setEnabled(true);
-         jButtonDelete.setEnabled(true);
+        jTextMaSB.setEnabled(false);
+        jTextDiaDiem.setEnabled(false);
+        jTextName.setEnabled(false);
+        jButtonSave.setEnabled(false);
+        jButtonEdit.setEnabled(true);
+        jButtonDelete.setEnabled(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCancelActionPerformed
    

@@ -49,4 +49,56 @@ public class DeleteData {
         System.out.println("xóa sân bay thất bại");
         return false;
     }
+     public static boolean deleteDuongBay(String maDuongBay) {
+        String sqlCommand = "delete from dbo.DUONGBAY where maDuongBay=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, maDuongBay);
+            if (ps.executeUpdate() > 0) {
+                System.out.println("Xóa đường bay thành công");
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DeleteData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("xóa đường bay thất bại");
+        return false;
+    }
+    public static boolean deleteNhanvien(String sdt) {
+        String sqlCommand = "delete from dbo.NHANVIEN where sdt=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, sdt);
+            if (ps.executeUpdate() > 0) {
+                System.out.println("Xóa nhân viên thành công");
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DeleteData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("xóa nhân viên thất bại");
+        return false;
+    } 
+     public static boolean deleteTaikhoan(String tenDN) {
+        String sqlCommand = "delete from dbo.TAIKHOAN where TenDangNhap=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, tenDN);
+            if (ps.executeUpdate() > 0) {
+                System.out.println("Xóa tài khoản thành công");
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DeleteData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("xóa tài khoản thất bại");
+        return false;
+    } 
+        
 }

@@ -121,8 +121,8 @@ public class LoadData {
                 Ghe ghe = new Ghe(
                         rs.getString(1).trim(),
                         rs.getString(2).trim(),
-                        rs.getString(3).trim(),
-                        rs.getBoolean(4));
+                      
+                        rs.getBoolean(3));
                 arrayListGhe.add(ghe);
             }
         } catch (SQLException ex) {

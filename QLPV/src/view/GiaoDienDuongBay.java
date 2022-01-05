@@ -30,16 +30,17 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
         jTable1.setDefaultEditor(Object.class, null);;
         jTable1.setSelectionBackground(Color.RED);
         jTable1.setSelectionMode(0);
-        
-       new LoadData();
+        showData();
+       
         for (model.SanBay sb : controller.Controller.arrayListSanBay) {
             jComboBox1.addItem(sb.getMaSanBay().trim() + "-" + sb.getTenSanBay());
             jComboBox2.addItem(sb.getMaSanBay().trim() + "-" + sb.getTenSanBay());
         }
-        showData();
+        
 
     }
     private void showData() {
+        new LoadData();
        table.setRowCount(0);
         for (DuongBay db : controller.Controller.arrayListDuongBay) {
             table.addRow(new Object[]{db.getMaDuongBay(),db.getMaSanBayDi(),db.getMasanBayDen(),db.getKhoangCach()});
@@ -300,30 +301,67 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         // TODO add your handling code here:
-        String sb1=controller.Controller.arrayListSanBay.get(jComboBox1.getSelectedIndex()).getMaSanBay();
-        String sb2=controller.Controller.arrayListSanBay.get(jComboBox2.getSelectedIndex()).getMaSanBay();
-        if(sb1.equals(sb2)){
-            baoLoi.setText("Đường bay không hợp lệ!");
+        
+        
+        for (int i = 0; i < jTextField5.getText().length(); i++) {
+            if (Character.isDigit(jTextField5.getText().charAt(i))){
+                 continue;
+            }
+            else {
+                baoLoi.setText("thông tin đường bay không hợp lệ!");
+                return;
+            }
+      
         }
-        else if(jTextField5.getText().equals(""))
-            baoLoi.setText("Vui lòng nhập đầy đủ thông tin đường bay!");
+        System.out.println(jTextField5.getText());
+        if(jTextField5.getText().equals(""))
+                 baoLoi.setText("Vui lòng nhập đầy đủ thông tin đường bay!");
         else{
+            String sb1=controller.Controller.arrayListSanBay.get(jComboBox1.getSelectedIndex()).getMaSanBay();
+            String sb2=controller.Controller.arrayListSanBay.get(jComboBox2.getSelectedIndex()).getMaSanBay();
             DuongBay db= new DuongBay(sb1.concat(sb2),sb1,sb2,Integer.parseInt(jTextField5.getText()));
-            connection.InsertData.insertDuongBay(db);
-            table.addRow(new Object[]{db.getMaDuongBay(),db.getMaSanBayDi(),db.getMasanBayDen(),db.getKhoangCach()});
-            jComboBox1.setEnabled(false);
-            jComboBox2.setEnabled(false);
-            jTextField5.setEnabled(false);
-            jButtonSave.setEnabled(false);
-            jButtonCanncel.setEnabled(false);
-            jButtonEdit.setEnabled(true);
-            jButtonDel.setEnabled(true);
-            jTable1.getSelectionModel().setSelectionInterval(jTable1.getRowCount()-1,jTable1.getRowCount()-1);
+            if (jTable1.getSelectedRow()==-1){
+            
+                for (DuongBay dbb : arrayListDuongBay)
+                    if(dbb.getMaDuongBay().equals(sb1+sb2)){
+                        baoLoi.setText("Đường bay đã tồn tại!");
+                        return;
+                    }
 
+                if(sb1.equals(sb2))
+                    baoLoi.setText("Đường bay không hợp lệ!");
+
+                else {
+
+                    connection.InsertData.insertDuongBay(db);
+                    table.addRow(new Object[]{db.getMaDuongBay(),db.getMaSanBayDi(),db.getMasanBayDen(),db.getKhoangCach()});
+                    jComboBox1.setEnabled(false);
+                    jComboBox2.setEnabled(false);
+                    jTextField5.setEnabled(false);
+                    jButtonSave.setEnabled(false);
+                    jButtonCanncel.setEnabled(false);
+                    jButtonEdit.setEnabled(true);
+                    jButtonDel.setEnabled(true);
+                    jTable1.getSelectionModel().setSelectionInterval(jTable1.getRowCount()-1,jTable1.getRowCount()-1);
+
+                  }
+            }
+            else
+           {
+                int row = jTable1.getSelectedRow();
+                connection.UpdateData.updateDuongBay(db);
+                showData();
+                jComboBox1.setEnabled(false);
+                jComboBox2.setEnabled(false);
+                jTextField5.setEnabled(false);
+                jButtonSave.setEnabled(false);
+                jButtonCanncel.setEnabled(false);
+                jButtonEdit.setEnabled(true);
+                jButtonDel.setEnabled(true);
+                jTable1.getSelectionModel().setSelectionInterval(row, row);
+           }
         }
-        
-       
-        
+   
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
@@ -384,7 +422,7 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
 
                 if (confirmed == JOptionPane.YES_OPTION) {
                      jTextField5.setText("");
-                     connection.DeleteData.deleteSanBay((String) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
+                     connection.DeleteData.deleteDuongBay((String) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
                      showData();
                 } 
         }

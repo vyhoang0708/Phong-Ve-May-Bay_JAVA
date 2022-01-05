@@ -5,6 +5,8 @@
 package view;
 
 import connection.LoadData;
+import controller.Controller;
+import static controller.Controller.arrayListMayBay;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -52,17 +54,17 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jButtonADD = new javax.swing.JButton();
+        jButtonEdit = new javax.swing.JButton();
+        jButtonDelete = new javax.swing.JButton();
+        jButtonSave = new javax.swing.JButton();
+        jButtonCancel = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTextSHMB = new javax.swing.JTextField();
+        jTextHangMB = new javax.swing.JTextField();
+        jTextSoGhe = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -71,42 +73,59 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         setSize(new java.awt.Dimension(723, 352));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Danh sách Máy Bay");
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setText("Thêm");
-
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setText("Sửa");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonADD.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonADD.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonADD.setText("Thêm");
+        jButtonADD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonADDActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setText("Xóa");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEdit.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonEdit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonEdit.setText("Sửa");
+        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonEditActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton4.setText("Lưu");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonDelete.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonDelete.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonDelete.setText("Xóa");
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonDeleteActionPerformed(evt);
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton6.setText("Hủy");
+        jButtonSave.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonSave.setText("Lưu");
+        jButtonSave.setEnabled(false);
+        jButtonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveActionPerformed(evt);
+            }
+        });
+
+        jButtonCancel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonCancel.setText("Hủy");
+        jButtonCancel.setEnabled(false);
+        jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Số hiệu máy bay");
@@ -116,6 +135,27 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Số ghế");
+
+        jTextSHMB.setEnabled(false);
+        jTextSHMB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextSHMBMouseClicked(evt);
+            }
+        });
+
+        jTextHangMB.setEnabled(false);
+        jTextHangMB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextHangMBMouseClicked(evt);
+            }
+        });
+
+        jTextSoGhe.setEnabled(false);
+        jTextSoGhe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextSoGheMouseClicked(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
@@ -133,12 +173,15 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
                 "SHMB", "Hãng Bay", "Số Ghế"
             }
         ));
+        jTable1.setRowHeight(30);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
+
+        baoLoi.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,41 +197,40 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButtonSave)
+                                .addGap(36, 36, 36)
+                                .addComponent(jButtonCancel)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jButton4)
-                                        .addGap(36, 36, 36)
-                                        .addComponent(jButton6)
-                                        .addGap(43, 97, Short.MAX_VALUE))
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextHangMB, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(baoLoi, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel4)
+                                            .addGap(61, 61, 61)
+                                            .addComponent(jTextSoGhe, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jButtonADD)
+                                            .addComponent(jLabel2))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel3)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(34, 34, 34)
+                                                .addComponent(jButtonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(30, 30, 30)
+                                                .addComponent(jButtonDelete))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jButton1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jButton3))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel2)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addGap(61, 61, 61)
-                                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 4, Short.MAX_VALUE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(baoLoi, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))))
+                                                .addComponent(jTextSHMB, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 14, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,82 +239,128 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jButton5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
+                            .addComponent(jButtonADD, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextSHMB, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextHangMB, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextSoGhe, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton4)
-                            .addComponent(jButton6))
+                            .addComponent(jButtonSave)
+                            .addComponent(jButtonCancel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(baoLoi, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(95, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
         // TODO add your handling code here:
           baoLoi.setText("");
+          
         if(jTable1.getSelectedRow()==-1){
             baoLoi.setText("Vui lòng chọn máy bay");}
         else
         {
-        jTable1.setEnabled(true); 
-        jTextField1.setEnabled(true);
-        jTextField2.setEnabled(true);
-        jTextField3.setEnabled(true);
+            jButtonSave.setEnabled(true);
+            jButtonCancel.setEnabled(true);
+            jTable1.setEnabled(true); 
+            jTextSHMB.setEnabled(true);
+            jTextHangMB.setEnabled(true);
+            jTextSoGhe.setEnabled(true);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonEditActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         new GiaoDienQuanLy().setVisible(true);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         // TODO add your handling code here:
-         MayBay mb = new MayBay(jTextField1.getText(),jTextField2.getText(),Integer.parseInt(jTextField3.getText()));
-         if(jTable1.getSelectedRow()==-1){
-            connection.InsertData.insertMayBay(mb);
-         }
-        else
-        {
-            connection.UpdateData.updateMayBay(mb);
-                }
-       showData();
-    }//GEN-LAST:event_jButton4ActionPerformed
+        baoLoi.setText("");
+        
+        for (int i = 0; i < jTextSoGhe.getText().length(); i++) {
+            if (Character.isDigit(jTextSoGhe.getText().charAt(i))){
+                 continue;
+            }
+            else {
+                baoLoi.setText("thông tin đường bay không hợp lệ!");
+                return;
+            }
+      
+        }
+        if(jTextSHMB.getText().equals("") || jTextHangMB.getText().equals("") || jTextSoGhe.getText().equals("") )
+            baoLoi.setText("Vui lòng nhập đầy đủ thông tin đường bay!");
+        else{
+            MayBay mb = new MayBay(jTextSHMB.getText(),jTextHangMB.getText(),Integer.parseInt(jTextSoGhe.getText()));
+            if(jTable1.getSelectedRow()==-1){
+               for (MayBay mbb : arrayListMayBay)
+                    if(mbb.getSHMB().equals(jTextSHMB.getText())){
+                        baoLoi.setText("Máy bay đã tồn tại!");
+                        return;
+                    }
+               connection.InsertData.insertMayBay(mb);
+               table.addRow(new Object[]{mb.getSHMB(),mb.getHangBay(),mb.getSoGhe()});
+               jTextSHMB.setEnabled(false);
+               jTextHangMB.setEnabled(false);
+               jTextSoGhe.setEnabled(false);
+               jButtonSave.setEnabled(false);
+               jButtonCancel.setEnabled(false);
+               jButtonEdit.setEnabled(true);
+               jButtonDelete.setEnabled(true);
+               jTable1.setEnabled(true);
+               jTable1.getSelectionModel().setSelectionInterval(jTable1.getRowCount()-1,jTable1.getRowCount()-1);
+            }
+           else
+            {
+               int row = jTable1.getSelectedRow();
+               connection.UpdateData.updateMayBay(mb);
+               showData();
+               jTextSHMB.setEnabled(false);
+               jTextHangMB.setEnabled(false);
+               jTextSoGhe.setEnabled(false);
+               jButtonSave.setEnabled(false);
+               jButtonCancel.setEnabled(false);
+               jTable1.getSelectionModel().setSelectionInterval(row, row);
+            }
+            showData();
+        }
+         
+    }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
+        // TODO add your handling code here:\
+        baoLoi.setText("");
         int row= jTable1.getSelectedRow();
-        jTextField1.setText((String) jTable1.getValueAt(row,0));
-        jTextField2.setText((String) jTable1.getValueAt(row,1));
-        jTextField3.setText(String.valueOf(jTable1.getValueAt(row,2)));
+        jTextSHMB.setText((String) jTable1.getValueAt(row,0));
+        jTextHangMB.setText((String) jTable1.getValueAt(row,1));
+        jTextSoGhe.setText(String.valueOf(jTable1.getValueAt(row,2)));
         
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // TODO add your handling code here:
-
+        baoLoi.setText("");
         if(jTable1.getSelectedRow()==-1){
             baoLoi.setText("Vui lòng chọn máy bay");}
         else
@@ -286,7 +374,51 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
                 } 
        
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
+
+    private void jButtonADDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonADDActionPerformed
+        baoLoi.setText("");
+        jTextSHMB.setText("");
+        jTextHangMB.setText("");
+        jTextSoGhe.setText("");
+        jTextSHMB.setEnabled(true);
+        jTextHangMB.setEnabled(true);
+        jTextSoGhe.setEnabled(true);
+        jTable1.setEnabled(false);
+        jTable1.clearSelection();
+        jButtonSave.setEnabled(true);
+        jButtonCancel.setEnabled(true);
+        jButtonEdit.setEnabled(false);
+        jButtonDelete.setEnabled(false);// TODO add your handling code here:
+    }//GEN-LAST:event_jButtonADDActionPerformed
+
+    private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
+        baoLoi.setText("");
+        jTable1.setEnabled(true);
+        jTextSHMB.setEnabled(false);
+        jTextHangMB.setEnabled(false);
+        jTextSoGhe.setEnabled(false);
+        jButtonSave.setEnabled(false);
+        jButtonEdit.setEnabled(true);
+        jButtonDelete.setEnabled(true);
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCancelActionPerformed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        baoLoi.setText("");// TODO add your handling code here:
+    }//GEN-LAST:event_formMouseClicked
+
+    private void jTextSHMBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextSHMBMouseClicked
+       baoLoi.setText(""); // TODO add your handling code here:
+    }//GEN-LAST:event_jTextSHMBMouseClicked
+
+    private void jTextHangMBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextHangMBMouseClicked
+        baoLoi.setText("");// TODO add your handling code here:
+    }//GEN-LAST:event_jTextHangMBMouseClicked
+
+    private void jTextSoGheMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextSoGheMouseClicked
+        baoLoi.setText("");// TODO add your handling code here:
+    }//GEN-LAST:event_jTextSoGheMouseClicked
 
     /**
      * @param args the command line arguments
@@ -325,20 +457,20 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel baoLoi;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButtonADD;
+    private javax.swing.JButton jButtonCancel;
+    private javax.swing.JButton jButtonDelete;
+    private javax.swing.JButton jButtonEdit;
+    private javax.swing.JButton jButtonSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextHangMB;
+    private javax.swing.JTextField jTextSHMB;
+    private javax.swing.JTextField jTextSoGhe;
     // End of variables declaration//GEN-END:variables
 }

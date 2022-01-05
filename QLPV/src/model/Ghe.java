@@ -8,16 +8,16 @@ public class Ghe {
 
     private String maGhe;
     private String maChuyenBay;
-    private String loaiGhe;
+ 
     private boolean trangthai;
 
     public Ghe() {
     }
 
-    public Ghe(String maGhe, String maChuyenBay, String loaiGhe, boolean trangthai) {
+    public Ghe(String maGhe, String maChuyenBay, boolean trangthai) {
         this.maGhe = maGhe;
         this.maChuyenBay = maChuyenBay;
-        this.loaiGhe = loaiGhe;
+      
         this.trangthai = trangthai;
     }
 
@@ -37,13 +37,7 @@ public class Ghe {
         this.maChuyenBay = maChuyenBay;
     }
 
-    public String getLoaiGhe() {
-        return loaiGhe;
-    }
-
-    public void setLoaiGhe(String loaiGhe) {
-        this.loaiGhe = loaiGhe;
-    }
+   
 
     public boolean isTrangthai() {
         return trangthai;

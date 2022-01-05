@@ -218,7 +218,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMayBayActionPerformed
 
     private void btnTimChuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimChuyenActionPerformed
-           new GiaoDienKhachHang().setVisible(true);
+           new GiaoDienTimChuyenBay().setVisible(true);
            this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTimChuyenActionPerformed
@@ -234,7 +234,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windowns".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

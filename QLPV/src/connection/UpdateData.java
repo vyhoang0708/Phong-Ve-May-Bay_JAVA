@@ -56,7 +56,7 @@ public class UpdateData {
         }
         System.out.println("sửa máy bay thất bại");
         return false;
-     }
+    }
      public static boolean updateDuongBay(DuongBay duongbay) {
         String sqlCommand = "update dbo.DUONGBAY set  khoangcach=? " + " where MaDuongBay=?"  ;
          

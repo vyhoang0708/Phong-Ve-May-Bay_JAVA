@@ -18,6 +18,8 @@ public class Controller {
     public static ArrayList<SanBay> arrayListSanBay= new ArrayList<SanBay>();
     public static ArrayList<ChuyenBay> arrayListChuyenBay = new ArrayList<ChuyenBay>();
     public static TaiKhoan tk = new TaiKhoan();
+     public static ChuyenBay cb = new ChuyenBay();
+       public static ArrayList<ChuyenBay> arrayListTimChuyenBay = new ArrayList<ChuyenBay>();
     public static void main(String[] args) {
 
     }

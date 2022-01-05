@@ -35,7 +35,7 @@ public class InsertData {
             ps.setString(1, nv.getSDT());
             ps.setString(2, nv.getTenNhanVien());
             ps.setString(3, nv.getTenDangNhap());
-            ps.setInt(4, nv.getLuong());
+            ps.setInt(5, nv.getLuong());
 
             if (ps.executeUpdate() > 0) {
                 System.out.println("thêm nhân viên thành công");
@@ -132,6 +132,49 @@ public class InsertData {
         System.out.println("thêm đường bay thất bại");
         return false;
     }
+     public static boolean insertChuyenBay(ChuyenBay cb) {
+        String sqlCommand = "insert into dbo.CHUYENBAY values(?,?,?,?,?,?)";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, cb.getMaChuyenBay());
+            ps.setString(2, cb.getSHMB());
+             ps.setString(3, cb.getDuongBay().getMaDuongBay());
+            ps.setDate(4, cb.getNgayBay());
+            ps.setTime(5, cb.getGioBay());
+            ps.setInt(6, cb.getTrangThai());
+          
 
-   
+            if (ps.executeUpdate() > 0) {
+                System.out.println("thêm chuyến bay thành công");
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("thêm chuyến bay thất bại");
+        return false;
+    }
+        public static boolean insertGhe(Ghe ghe) {
+        String sqlCommand = "insert into dbo.GHE values(?,?,?)";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, ghe.getMaGhe());
+            ps.setString(2, ghe.getMaChuyenBay());
+            ps.setBoolean(3, ghe.isTrangthai());
+
+            if (ps.executeUpdate() > 0) {
+                System.out.println("thêm Ghe thành công");
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("thêm Ghe thất bại");
+        return false;
+    }
+     
 }

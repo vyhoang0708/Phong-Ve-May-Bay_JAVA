@@ -98,15 +98,15 @@ public class LoadData {
         ResultSet rs = DataConnection.retrieveData("select * from dbo.CHUYENBAY");
         try {
             while (rs.next()) {
-                ChuyenBay chuyenBay = new ChuyenBay(
+                ChuyenBay cb= new ChuyenBay(
                         rs.getString(1).trim(),
                         rs.getString(2).trim(),
-                        ChuyenBay.timDuongBay( rs.getString(3).trim()),
+                        ChuyenBay.timDuongBay(rs.getString(3).trim()),
                         rs.getDate(4),
                         rs.getTime(5),
                         rs.getInt(6));
-                chuyenBay.setArrayListGhe(loadTableGhe(chuyenBay.getMaChuyenBay().trim()));
-                controller.Controller.arrayListChuyenBay.add(chuyenBay);
+                cb.setArrayListGhe(loadTableGhe(cb.getMaChuyenBay().trim()));
+                controller.Controller.arrayListChuyenBay.add(cb);
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
@@ -121,7 +121,6 @@ public class LoadData {
                 Ghe ghe = new Ghe(
                         rs.getString(1).trim(),
                         rs.getString(2).trim(),
-                      
                         rs.getBoolean(3));
                 arrayListGhe.add(ghe);
             }
@@ -137,6 +136,7 @@ public class LoadData {
         controller.Controller.arrayListTaiKhoan.removeAll(controller.Controller.arrayListTaiKhoan);
         controller.Controller.arrayListMayBay.removeAll(controller.Controller.arrayListMayBay);    
         controller.Controller.arrayListNhanVien.removeAll(controller.Controller.arrayListNhanVien);
+         controller.Controller.arrayListChuyenBay.removeAll(controller.Controller.arrayListChuyenBay);
 
         loadTableTaiKhoan();  
         loadTableSanBay(); 

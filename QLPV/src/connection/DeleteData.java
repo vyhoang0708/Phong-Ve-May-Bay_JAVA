@@ -49,24 +49,7 @@ public class DeleteData {
         System.out.println("xóa sân bay thất bại");
         return false;
     }
-     public static boolean deleteDuongBay(String maDuongBay) {
-        String sqlCommand = "delete from dbo.DUONGBAY where maDuongBay=?";
-        try {
-            DataConnection.createStatement();
-            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
-            ps.setString(1, maDuongBay);
-            if (ps.executeUpdate() > 0) {
-                System.out.println("Xóa đường bay thành công");
-                return true;
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(DeleteData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println("xóa đường bay thất bại");
-        return false;
-    }
-    public static boolean deleteNhanvien(String sdt) {
+         public static boolean deleteNhanvien(String sdt) {
         String sqlCommand = "delete from dbo.NHANVIEN where sdt=?";
         try {
             DataConnection.createStatement();
@@ -99,6 +82,23 @@ public class DeleteData {
         }
         System.out.println("xóa tài khoản thất bại");
         return false;
-    } 
-        
+    }
+     public static boolean deleteDuongBay(String maDuongBay) {
+        String sqlCommand = "delete from dbo.DUONGBAY where maDuongBay=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, maDuongBay);
+            if (ps.executeUpdate() > 0) {
+                System.out.println("Xóa đường bay thành công");
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DeleteData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("xóa đường bay thất bại");
+        return false;
+    }
+     
 }

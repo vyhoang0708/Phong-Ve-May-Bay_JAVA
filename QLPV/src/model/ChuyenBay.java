@@ -97,6 +97,20 @@ public class ChuyenBay {
          }
         return null;
     }
-    
+     public int getSoGhe() {
+        for (MayBay mb: controller.Controller.arrayListMayBay) {
+             if(mb.getSHMB().equals(this.SHMB))
+                 return mb.getSoGhe();
+         }
+        return -1;
+    }
+    public int getSoGheTrong() {
+        int soGheTrong=0;
+        for (Ghe ghe :arrayListGhe)
+            if(ghe.isTrangthai()==false)
+                soGheTrong++;
+         
+        return soGheTrong;
+        }
     
 }

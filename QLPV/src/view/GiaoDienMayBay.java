@@ -5,14 +5,13 @@
 package view;
 
 import connection.LoadData;
-import controller.Controller;
+
 import static controller.Controller.arrayListMayBay;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.MayBay;
-import model.NhanVien;
-import view.GiaoDienNhanVien;
+
 
 /**
  *
@@ -445,6 +444,7 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GiaoDienMayBay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

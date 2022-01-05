@@ -144,7 +144,7 @@ public class DangNhap extends javax.swing.JFrame {
                    this.dispose();
                }
                else{
-                   new GiaoDienKhachHang().setVisible(true);
+                   new GiaoDienTimChuyenBay().setVisible(true);
                    this.dispose();
                }
             }

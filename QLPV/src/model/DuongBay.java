@@ -55,6 +55,18 @@ public class DuongBay {
     public void setKhoangCach(int khoangCach) {
         this.khoangCach = khoangCach;
     }
+    public String getTenSanBayDi() {
+         for (model.SanBay sb : controller.Controller.arrayListSanBay) 
+            if(sb.getMaSanBay().equals(this.maSanBayDi))
+                return sb.getTenSanBay();
+         return null;
+    }
+    public String getTenSanBayDen() {
+         for (model.SanBay sb : controller.Controller.arrayListSanBay) 
+            if(sb.getMaSanBay().equals(this.masanBayDen))
+                return sb.getTenSanBay();
+         return null;
+    }
 
   
 }

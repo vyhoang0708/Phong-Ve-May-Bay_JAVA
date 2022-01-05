@@ -8,7 +8,6 @@ public class Ghe {
 
     private String maGhe;
     private String maChuyenBay;
- 
     private boolean trangthai;
 
     public Ghe() {
@@ -17,7 +16,6 @@ public class Ghe {
     public Ghe(String maGhe, String maChuyenBay, boolean trangthai) {
         this.maGhe = maGhe;
         this.maChuyenBay = maChuyenBay;
-      
         this.trangthai = trangthai;
     }
 
@@ -38,7 +36,6 @@ public class Ghe {
     }
 
    
-
     public boolean isTrangthai() {
         return trangthai;
     }

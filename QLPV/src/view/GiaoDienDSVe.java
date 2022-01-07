@@ -13,10 +13,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import model.DuongBay;
-import model.Ghe;
+import model.Ve;
 
 /**
  *
@@ -30,55 +27,59 @@ public class GiaoDienDSVe extends javax.swing.JFrame {
     public GiaoDienDSVe() {
         initComponents();
         ArrayList<JButton> listGhe= new ArrayList<JButton>();
+        controller.Controller.dsGheChon.removeAll(controller.Controller.dsGheChon);    
+        ArrayList<String> mapGhe= new ArrayList<String>();
         
-        Collections.sort( controller.Controller.cb.getArrayListGhe(),new Comparator<Ghe>() {
-            @Override
-            public int compare(Ghe ghe1,Ghe ghe2) {
-                if (Integer.parseInt(ghe1.getMaGhe()) < Integer.parseInt(ghe2.getMaGhe()) ) {
-                    return -1;
-                } else {
-                    if (Integer.parseInt(ghe1.getMaGhe()) == Integer.parseInt(ghe2.getMaGhe())) {
-                        return 0;
-                    } else {
-                        return 1;
-                    }
-                }
-            }
-        });
+       
         int soGhe= controller.Controller.cb.getSoGhe();
+        System.out.println(soGhe);
+        mapGhe.add("");
+        for (int i = 0; i < soGhe; i++) {
+            mapGhe.add("0");
+        }
+        for (Ve Ve :controller.Controller.cb.getArrayListVe() ) {
+            mapGhe.set(Integer.parseInt(Ve.getMaGhe()),Ve.getMaGhe());
+        }
 	int chiso=1;
         int kichthuoc=80;
         
          for(int i=0; ;i=i+kichthuoc+10){
 	  for(int j=1;j<=6;j++)
-	  {
+          {
 	  	 JButton jButton1 =new JButton();
-                     
-                    jButton1.setBounds(50+(j-1)*(kichthuoc+10)+100*(j>3?1:0),10+i,kichthuoc,kichthuoc);
-                     jPanel1.add(jButton1);
-                     jButton1.setText(String.valueOf(chiso));
-                     if(controller.Controller.cb.getArrayListGhe().get(chiso-1).isTrangthai()==true) {
-                        jButton1.setBackground(Color.RED);
-                        jButton1.setEnabled(false);
-                     }
-                     jButton1.addActionListener(new java.awt.event.ActionListener() {
-                         public void actionPerformed(java.awt.event.ActionEvent evt) {
-                             chonGhe(evt,jButton1);
+                 jButton1.setBounds(50+(j-1)*(kichthuoc+10)+100*(j>3?1:0),10+i,kichthuoc,kichthuoc);
+                 jPanel1.add(jButton1);
+                 jButton1.setText(String.valueOf(chiso));
+                 if( ! mapGhe.get(chiso).equals("0")) {
+                    jButton1.setBackground(Color.RED);
+                    jButton1.setEnabled(false);
+                 }
+                 jButton1.addActionListener(new java.awt.event.ActionListener() {
+                     public void actionPerformed(java.awt.event.ActionEvent evt) {
+                         chonGhe(evt,jButton1);
             }});
                      listGhe.add(jButton1);
-		if(chiso==soGhe) {
-			return;
-		 }
-		 chiso++;
+		if(chiso++==soGhe) {
+                              return;
+                       }
 	   } 
-          
 	}
            
       
     }
 
     private void chonGhe(java.awt.event.ActionEvent evt,JButton btn) {
-        btn.setBackground(Color.GREEN);  
+        if(controller.Controller.dsGheChon.size()+1<controller.Controller.soLuongVeChon){
+                btn.setBackground(Color.GREEN);
+                controller.Controller.dsGheChon.add(btn.getText());
+        }
+        else{
+             controller.Controller.dsGheChon.add(btn.getText());
+            controller.Controller.dsVeChon.removeAll(controller.Controller.dsVeChon);
+            new GiaoDienThongTinVe().setVisible(true);    
+            this.dispose();
+    }
+            
     }
     /**
      * This method is called from within the constructor to initialize the form.

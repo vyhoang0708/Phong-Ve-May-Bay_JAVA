@@ -19,7 +19,7 @@ public class ChuyenBay {
     private Date ngayBay;
     private Time gioBay;
     private int trangThai;
-    private ArrayList<Ghe> arrayListGhe = new ArrayList<Ghe>();
+    private ArrayList<Ve> arrayListVe = new ArrayList<Ve>();
 
     public ChuyenBay() {
     }
@@ -82,12 +82,12 @@ public class ChuyenBay {
         this.trangThai = trangThai  ;
     }
 
-    public ArrayList<Ghe> getArrayListGhe() {
-        return arrayListGhe;
+    public ArrayList<Ve> getArrayListVe() {
+        return arrayListVe;
     }
 
-    public void setArrayListGhe(ArrayList<Ghe> arrayListGhe) {
-        this.arrayListGhe = arrayListGhe;
+    public void setArrayListVe(ArrayList<Ve> arrayListVe) {
+        this.arrayListVe = arrayListVe;
     }
     
      public static DuongBay timDuongBay(String maDuongBay) {
@@ -105,12 +105,7 @@ public class ChuyenBay {
         return -1;
     }
     public int getSoGheTrong() {
-        int soGheTrong=0;
-        for (Ghe ghe :arrayListGhe)
-            if(ghe.isTrangthai()==false)
-                soGheTrong++;
-         
-        return soGheTrong;
+        return getSoGhe()-arrayListVe.size();
         }
     
 }

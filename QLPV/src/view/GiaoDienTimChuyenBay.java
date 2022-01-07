@@ -5,15 +5,12 @@
 package view;
 import connection.LoadData;
 import  controller.*;
-import java.awt.Color;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.BorderFactory;
-import javax.swing.JOptionPane;
 import model.ChuyenBay;
 import static controller.Controller.*;
 
@@ -181,6 +178,11 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("<HTML><u>Đăng xuất</u></HTML>");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel4MousePressed(evt);
+            }
+        });
 
         jLabel5.setText("|");
 
@@ -362,7 +364,6 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-           
             String SanBayDi=jComboBox1.getSelectedItem().toString().substring(0, 3);
             String SanBayDen=jComboBox2.getSelectedItem().toString().substring(0, 3);
             if(SanBayDi.equals(SanBayDen)){
@@ -378,6 +379,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
             System.out.println(maDuongBayDi);
             int soGheNguoiLon = (int) (jSpinner1.getValue());
             int soGheTreEm =  (int) (jSpinner2.getValue());
+            controller.Controller.soLuongVeChon=soGheNguoiLon+soGheTreEm;
             controller.Controller.arrayListTimChuyenBay.removeAll(controller.Controller.arrayListTimChuyenBay);          
            for (ChuyenBay cb: arrayListChuyenBay) {
              if(cb.getDuongBay().getMaDuongBay().equals(maDuongBayDi) && cb.getNgayBay().equals(ngayDi)){
@@ -416,6 +418,12 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
         jDateChooser2.setEnabled(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
+        // TODO add your handling code here:
+        new DangNhap().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel4MousePressed
 
     /**
      * @param args the command line arguments

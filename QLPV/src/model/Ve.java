@@ -8,30 +8,23 @@ import java.sql.Date;
  */
 public class Ve {
 
-    private String maVe;
     private String maChuyenBay;
-    private int giaVe;
-    private KhachHang hanhKhach;
+    private String tenHanhKhach;
+    private String sDT;
     private String maGhe;
     
     public Ve() {
     }
 
-    public Ve(String maVe, String maChuyenBay, int giaVe, KhachHang hanhKhach, String maGhe) {
-        this.maVe = maVe;
+    public Ve( String maChuyenBay, String tenHanhKhach, String sDT, String maGhe) {
+        
         this.maChuyenBay = maChuyenBay;
-        this.giaVe = giaVe;
-        this.hanhKhach = hanhKhach;
+        this.tenHanhKhach = tenHanhKhach;
+        this.sDT = sDT;
         this.maGhe = maGhe;
     }
 
-    public String getMaVe() {
-        return maVe;
-    }
-
-    public void setMaVe(String maVe) {
-        this.maVe = maVe;
-    }
+  
 
     public String getMaChuyenBay() {
         return maChuyenBay;
@@ -41,20 +34,20 @@ public class Ve {
         this.maChuyenBay = maChuyenBay;
     }
 
-    public int getGiaVe() {
-        return giaVe;
+    public String getTenHanhKhach() {
+        return tenHanhKhach;
     }
 
-    public void setGiaVe(int giaVe) {
-        this.giaVe = giaVe;
+    public void setTenHanhKhach(String tenHanhKhach) {
+        this.tenHanhKhach = tenHanhKhach;
     }
 
-    public KhachHang getHanhKhach() {
-        return hanhKhach;
+    public String getsDT() {
+        return sDT;
     }
 
-    public void setHanhKhach(KhachHang hanhKhach) {
-        this.hanhKhach = hanhKhach;
+    public void setsDT(String sDT) {
+        this.sDT = sDT;
     }
 
     public String getMaGhe() {
@@ -64,5 +57,7 @@ public class Ve {
     public void setMaGhe(String maGhe) {
         this.maGhe = maGhe;
     }
+
+  
     
 }

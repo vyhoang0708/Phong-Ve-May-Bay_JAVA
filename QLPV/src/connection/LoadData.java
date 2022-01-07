@@ -105,29 +105,30 @@ public class LoadData {
                         rs.getDate(4),
                         rs.getTime(5),
                         rs.getInt(6));
-                cb.setArrayListGhe(loadTableGhe(cb.getMaChuyenBay().trim()));
+                cb.setArrayListVe(loadTableVe(cb.getMaChuyenBay().trim()));
                 controller.Controller.arrayListChuyenBay.add(cb);
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-      public static ArrayList<Ghe> loadTableGhe(String maChuyenBay) {
+      public static ArrayList<Ve> loadTableVe(String maChuyenBay) {
 
-        ArrayList<Ghe> arrayListGhe = new ArrayList<Ghe>();
-        ResultSet rs = DataConnection.retrieveData("select * from dbo.GHE where MaChuyenBay like '%" + maChuyenBay + " %'");
+        ArrayList<Ve> arrayListVe = new ArrayList<Ve>();
+        ResultSet rs = DataConnection.retrieveData("select * from dbo.Ve where MaCB like '%" + maChuyenBay + "%'");
         try {
             while (rs.next()) {
-                Ghe ghe = new Ghe(
+                Ve ve = new Ve(
                         rs.getString(1).trim(),
                         rs.getString(2).trim(),
-                        rs.getBoolean(3));
-                arrayListGhe.add(ghe);
+                        rs.getString(3).trim(),
+                        rs.getString(4).trim());
+                arrayListVe.add(ve);
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return arrayListGhe;
+        return arrayListVe;
     }
 
     public LoadData() {

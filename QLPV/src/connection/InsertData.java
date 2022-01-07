@@ -1,5 +1,6 @@
 package connection;
 
+import java.lang.reflect.Array;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -156,25 +157,29 @@ public class InsertData {
         System.out.println("thêm chuyến bay thất bại");
         return false;
     }
-        public static boolean insertGhe(Ghe ghe) {
-        String sqlCommand = "insert into dbo.GHE values(?,?,?)";
-        try {
-            DataConnection.createStatement();
-            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
-            ps.setString(1, ghe.getMaGhe());
-            ps.setString(2, ghe.getMaChuyenBay());
-            ps.setBoolean(3, ghe.isTrangthai());
-
-            if (ps.executeUpdate() > 0) {
+       
+       
+        public static void insertVe(ArrayList<Ve> dsVe) {
+        String sqlCommand = "insert into dbo.Ve values(?,?,?,?)";
+           
+            for (Ve ve : dsVe) {
+                 try {
+                    DataConnection.createStatement();
+                    PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+                    ps.setString(1, ve.getMaChuyenBay());
+                    ps.setString(2, ve.getTenHanhKhach());
+                    ps.setString(3, ve.getsDT());
+                    ps.setString(4, ve.getMaGhe());
+        if (ps.executeUpdate() > 0) {
                 System.out.println("thêm Ghe thành công");
-                return true;
+               
             }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println("thêm Ghe thất bại");
-        return false;
+                } catch (SQLException ex) {
+                    Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
+            }
+       
     }
      
 }

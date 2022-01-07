@@ -4,6 +4,7 @@
  */
 package view;
 
+import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,6 +23,10 @@ public class GiaoDienChonChuyenBay extends javax.swing.JFrame {
     private DefaultTableModel dtm;
     public GiaoDienChonChuyenBay() {
         initComponents();
+        jTable1.setDefaultEditor(Object.class, null);;
+        jTable1.setSelectionBackground(Color.RED);
+        jTable1.setSelectionMode(0);
+        
         seacherChuyenBay();
     }
 
@@ -90,7 +95,9 @@ public class GiaoDienChonChuyenBay extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-      
+     controller.Controller.cb= controller.Controller.arrayListTimChuyenBay.get(jTable1.getSelectedRow());   
+     new GiaoDienDSVe().setVisible(true);
+     this.dispose();
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**

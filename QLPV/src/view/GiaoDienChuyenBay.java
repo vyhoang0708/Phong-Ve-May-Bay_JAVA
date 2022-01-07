@@ -14,7 +14,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import model.ChuyenBay;
-import model.Ghe;
 
 
 /**
@@ -130,7 +129,7 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
 
         jComboBox_GioDi1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
 
-        jComboBox_PhutDi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "10", "20", "30", "40", "50", " " }));
+        jComboBox_PhutDi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "10", "14", "20", "30", "40", "50", " " }));
         jComboBox_PhutDi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox_PhutDiActionPerformed(evt);
@@ -317,10 +316,6 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
                             Integer.parseInt(jComboBox_PhutDi.getSelectedItem().toString()),
                         0),0);
         connection.InsertData.insertChuyenBay(cb);
-        for (int i = 1; i <= cb.getSoGhe(); i++) {
-            Ghe ghe= new Ghe(String.valueOf(i),cb.getMaChuyenBay(),false);
-            connection.InsertData.insertGhe(ghe);
-        }
         showData();
     }//GEN-LAST:event_jButtonSaveActionPerformed
 

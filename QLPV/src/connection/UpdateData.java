@@ -8,11 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.DuongBay;
-import model.MayBay;
-import model.NhanVien;
-import model.SanBay;
-
+import model.*;
 /**
  *
  * @author PC
@@ -89,6 +85,41 @@ public class UpdateData {
             Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("sửa nhân viên thất bại");
+        return false;
+    }
+     public static boolean updateChuyenBay(ChuyenBay cb) {
+        String sqlCommand = "update dbo.CHUYENBAY set  NGAYBAY=? , GIOBAY = ? " + " where maChuyenBay=?"  ;
+         
+        try { 
+            DataConnection.createStatement();
+            PreparedStatement  ps = DataConnection.connection.prepareStatement(sqlCommand);
+ 
+            ps.setDate(1, cb.getNgayBay());
+            ps.setTime(2, cb.getGioBay());
+            ps.setString(3, cb.getMaChuyenBay());
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("sửa chuyến bay thất bại");
+        return false;
+    }
+      public static boolean huyChuyenBay(String maCB) {
+        String sqlCommand = "update dbo.CHUYENBAY set   TRANGTHAI = ? " + " where maChuyenBay=?"  ;
+         
+        try { 
+            DataConnection.createStatement();
+            PreparedStatement  ps = DataConnection.connection.prepareStatement(sqlCommand);
+ 
+            ps.setInt(1, 1);
+            ps.setString(2, maCB);
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Hủy chuyến bay thất bại");
         return false;
     }
 }

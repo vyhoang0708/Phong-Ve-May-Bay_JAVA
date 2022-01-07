@@ -445,6 +445,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;HTML&gt;&lt;u&gt;&#x110;&#x103;ng xu&#x1ea5;t&lt;/u&gt;&lt;/HTML&gt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel4MousePressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>

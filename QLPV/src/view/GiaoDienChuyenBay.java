@@ -5,15 +5,20 @@
 package view;
 
 import connection.LoadData;
+import static connection.UpdateData.updateChuyenBay;
+import controller.Controller;
 import java.awt.Color;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.ChuyenBay;
+//import model.Ghe;
 
 
 /**
@@ -37,17 +42,25 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
         for (model.MayBay mb : controller.Controller.arrayListMayBay) 
             jComboBoxSHMB.addItem(mb.getSHMB().trim() );
         for (model.DuongBay db : controller.Controller.arrayListDuongBay) 
-            jComboBoxDuongBay.addItem(db.getTenSanBayDi()+ "  "+ db.getTenSanBayDen() );
+            jComboBoxDuongBay.addItem(db.getMaSanBayDi()+ "->"+ db.getMasanBayDen() );
         
         
         
     }
     private void showData(){
+        
         new LoadData();
         table.setRowCount(0);
+        String trangthai = null;
+      
         for (ChuyenBay cb: controller.Controller.arrayListChuyenBay) {
-           table.addRow(new Object[]{cb.getMaChuyenBay(),cb.getDuongBay().getMaSanBayDi()+"->"+cb.getDuongBay().getMasanBayDen(),cb.getSHMB(),cb.getNgayBay()+" " +cb.getGioBay(),cb.getTrangThai()});
-   
+            if(cb.getTrangThai() ==0)
+                trangthai = "Còn Vé";
+            else
+                trangthai = "Hủy Chuyến";
+            table.addRow(new Object[]{cb.getMaChuyenBay(),cb.getSHMB(),cb.getDuongBay().getMaSanBayDi()+"->"+cb.getDuongBay().getMasanBayDen(),cb.getNgayBay()+" " +cb.getGioBay(),trangthai});
+            
+                
         }
         
     }
@@ -60,9 +73,10 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jButtonADD = new javax.swing.JButton();
+        jButtonHC = new javax.swing.JButton();
+        jButtonEdit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButtonSave = new javax.swing.JButton();
         jButtonCann = new javax.swing.JButton();
@@ -81,28 +95,40 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
         jButtonDSVe = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        baoloi = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jButton2.setText("Thêm");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
             }
         });
 
-        jButton3.setText("Hủy Chuyến");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonADD.setText("Thêm");
+        jButtonADD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonADDActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Sửa");
+        jButtonHC.setText("Hủy Chuyến");
+        jButtonHC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHCActionPerformed(evt);
+            }
+        });
+
+        jButtonEdit.setText("Sửa");
+        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("SHMB");
 
         jButtonSave.setText("Lưu");
+        jButtonSave.setEnabled(false);
         jButtonSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSaveActionPerformed(evt);
@@ -110,6 +136,12 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
         });
 
         jButtonCann.setText("Hủy");
+        jButtonCann.setEnabled(false);
+        jButtonCann.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCannActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Giờ Bay");
 
@@ -123,13 +155,35 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
 
         jLabel4.setText("Mã Chuyến Bay");
 
+        jTextFieldMaCB.setEnabled(false);
+        jTextFieldMaCB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldMaCBMouseClicked(evt);
+            }
+        });
+
+        jComboBoxSHMB.setEnabled(false);
+        jComboBoxSHMB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBoxSHMBMouseClicked(evt);
+            }
+        });
+
         jLabel5.setText("Ngày Bay");
 
         jDateChooserNgayBay.setDateFormatString("dd/MM/yyyy");
+        jDateChooserNgayBay.setEnabled(false);
+        jDateChooserNgayBay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jDateChooserNgayBayMouseClicked(evt);
+            }
+        });
 
         jComboBox_GioDi1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+        jComboBox_GioDi1.setEnabled(false);
 
-        jComboBox_PhutDi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "10", "14", "20", "30", "40", "50", " " }));
+        jComboBox_PhutDi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "" }));
+        jComboBox_PhutDi.setEnabled(false);
         jComboBox_PhutDi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox_PhutDiActionPerformed(evt);
@@ -140,6 +194,12 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
 
         jLabel3.setText("Đường Bay");
 
+        jComboBoxDuongBay.setEnabled(false);
+        jComboBoxDuongBay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBoxDuongBayMouseClicked(evt);
+            }
+        });
         jComboBoxDuongBay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxDuongBayActionPerformed(evt);
@@ -158,14 +218,21 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã Đường Bay", "SHMB", "Đường Bay", "Thời Gian", "Trạng Thái"
+                "Mã Chuyến Bay", "SHMB", "Đường Bay", "Thời Gian", "Trạng Thái"
             }
         ));
         jTable1.setRowHeight(34);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(3).setResizable(false);
         }
+
+        baoloi.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -175,12 +242,9 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
+                        .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(16, 16, 16)
@@ -192,69 +256,77 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jComboBox_PhutDi, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jDateChooserNgayBay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBoxDuongBay, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(jLabel1)
                                         .addGap(57, 57, 57)
                                         .addComponent(jComboBoxSHMB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(70, 70, 70)
-                                        .addComponent(jButtonSave)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButtonCann))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldMaCB, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jTextFieldMaCB))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jComboBoxDuongBay, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButtonDSVe)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton4)))
-                                .addGap(25, 25, 25))))))
+                                        .addComponent(jButtonADD, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButtonEdit)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                                        .addComponent(jButtonHC, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(70, 70, 70)
+                                                .addComponent(jButtonSave)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jButtonCann))
+                                            .addComponent(baoloi, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton7)
-                .addGap(9, 9, 9)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonDSVe, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonHC, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButtonADD, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonDSVe, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldMaCB, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                            .addComponent(jTextFieldMaCB, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxSHMB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBoxSHMB, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
-                                .addComponent(jComboBoxDuongBay)))
+                                .addComponent(jComboBoxDuongBay, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jDateChooserNgayBay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDateChooserNgayBay, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,20 +337,33 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
                                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addComponent(jComboBox_PhutDi, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jComboBox_GioDi1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonSave)
-                            .addComponent(jButtonCann)))
+                            .addComponent(jButtonCann))
+                        .addGap(18, 18, 18)
+                        .addComponent(baoloi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonADDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonADDActionPerformed
         // TODO add your handling code here:
-        
+        jTable1.setEnabled(false);
+        jTable1.clearSelection();
+        jTextFieldMaCB.setText("");
+        jTextFieldMaCB.setEnabled(true);
+        jComboBoxSHMB.setEnabled(true);
+        jComboBoxSHMB.setSelectedIndex(0);
+        jComboBoxDuongBay.setEnabled(true);
+        jDateChooserNgayBay.setEnabled(true);
+        jComboBox_GioDi1.setEnabled(true);
+        jComboBox_PhutDi.setEnabled(true);
+        jButtonSave.setEnabled(true);
+        jButtonCann.setEnabled(true);
         String date = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
      
          try {
@@ -288,11 +373,23 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
              Logger.getLogger(GiaoDienChuyenBay.class.getName()).log(Level.SEVERE, null, ex);
          }
       
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonADDActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jButtonHCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHCActionPerformed
+        baoloi.setText("");
+        if(jTable1.getSelectedRow()==-1){
+            baoloi.setText("Vui lòng chọn chuyến bay");}
+        else
+        {
+          int confirmed = JOptionPane.showConfirmDialog(null,
+                        "Xác Nhận Xóa Chuyến Bay?", "Xác nhận",JOptionPane.YES_NO_OPTION);
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                     connection.UpdateData.huyChuyenBay((String) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
+                     showData();
+                } 
+        }// TODO add your handling code here:
+    }//GEN-LAST:event_jButtonHCActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         new GiaoDienQuanLy().setVisible(true);
@@ -300,23 +397,71 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jComboBox_PhutDiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_PhutDiActionPerformed
-        // TODO add your handling code here:
+        baoloi.setText("");// TODO add your handling code here:
     }//GEN-LAST:event_jComboBox_PhutDiActionPerformed
 
     private void jComboBoxDuongBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDuongBayActionPerformed
-        // TODO add your handling code here:
+        baoloi.setText("");// TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxDuongBayActionPerformed
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         // TODO add your handling code here:
-        String dateString = String.format("%1$td/%1$tm/%1$tY", jDateChooserNgayBay.getDate());
-        ChuyenBay cb=new ChuyenBay(jTextFieldMaCB.getText(),controller.Controller.arrayListMayBay.get(jComboBoxSHMB.getSelectedIndex()).getSHMB(),
-                controller.Controller.arrayListDuongBay.get(jComboBoxSHMB.getSelectedIndex()), new java.sql.Date(jDateChooserNgayBay.getDate().getTime()), new Time(
-                            Integer.parseInt(jComboBox_GioDi1.getSelectedItem().toString()),
-                            Integer.parseInt(jComboBox_PhutDi.getSelectedItem().toString()),
-                        0),0);
-        connection.InsertData.insertChuyenBay(cb);
-        showData();
+        baoloi.setText("");
+        for (ChuyenBay cb: controller.Controller.arrayListChuyenBay) {
+            if(jTextFieldMaCB.getText().equals(cb.getMaChuyenBay()))  
+                baoloi.setText("Chuyến Bay đã tồn tại ");
+        }
+        if(jTextFieldMaCB.getText().equals(""))
+            baoloi.setText("Vui lòng điền đầy đủ thông tin chuyến bay");
+        else{
+            
+            String dateString = String.format("%1$td/%1$tm/%1$tY", jDateChooserNgayBay.getDate());
+            ChuyenBay cb=new ChuyenBay(jTextFieldMaCB.getText(),jComboBoxSHMB.getSelectedItem().toString(),
+                    controller.Controller.arrayListDuongBay.get(jComboBoxDuongBay.getSelectedIndex()), new java.sql.Date(jDateChooserNgayBay.getDate().getTime()), new Time(
+                                Integer.parseInt(jComboBox_GioDi1.getSelectedItem().toString()),
+                                Integer.parseInt(jComboBox_PhutDi.getSelectedItem().toString()),
+                            0),0);
+             System.out.println(jComboBoxSHMB.getSelectedItem().toString());
+//            for (int i = 1; i <= cb.getSoGhe(); i++) {
+//                Ghe ghe= new Ghe(String.valueOf(i),cb.getMaChuyenBay(),false);
+//                connection.InsertData.insertGhe(ghe);
+//            }
+            if (jTable1.getSelectedRow()==-1)
+            {
+                int row = jTable1.getSelectedRow();
+                connection.InsertData.insertChuyenBay(cb);
+                table.addRow(new Object[]{cb.getMaChuyenBay(),cb.getSHMB(),cb.getDuongBay(),cb.getNgayBay(), cb.getGioBay()});
+                jTable1.setEnabled(true);
+                jTextFieldMaCB.setEnabled(false);
+                jDateChooserNgayBay.setEnabled(false);
+                jComboBox_GioDi1.setEnabled(false);
+                jComboBox_PhutDi.setEnabled(false);
+                jButtonSave.setEnabled(false);
+                jButtonCann.setEnabled(false);
+                jButtonEdit.setEnabled(true);
+                jButtonHC.setEnabled(true);
+                jTable1.getSelectionModel().setSelectionInterval(row, row);
+            }
+            else{
+                connection.UpdateData.updateChuyenBay(cb);
+                jTable1.setEnabled(true);
+                jTextFieldMaCB.setEnabled(false);
+                jComboBoxSHMB.setEnabled(false);
+                jComboBoxSHMB.setSelectedIndex(0);
+                jComboBoxDuongBay.setEnabled(false);
+                jDateChooserNgayBay.setEnabled(false);
+                jComboBox_GioDi1.setEnabled(false);
+                jComboBox_PhutDi.setEnabled(false);
+                jButtonSave.setEnabled(false);
+                jButtonCann.setEnabled(false);
+                jButtonEdit.setEnabled(true);
+                jButtonHC.setEnabled(true);
+                jTable1.getSelectionModel().setSelectionInterval(jTable1.getRowCount()-1,jTable1.getRowCount()-1);
+
+            }
+            showData();
+        }
+        
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jButtonDSVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDSVeActionPerformed
@@ -324,6 +469,82 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
         controller.Controller.cb = controller.Controller.arrayListChuyenBay.get(jTable1.getSelectedRow());
         new GiaoDienDSVe().setVisible(true);
     }//GEN-LAST:event_jButtonDSVeActionPerformed
+
+    private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
+         baoloi.setText("");// TODO add your handling code here:
+        if(jTable1.getSelectedRow() == -1)
+             baoloi.setText("Vui lòng chọn chuyến bay.");
+        else if(jTable1.getValueAt(jTable1.getSelectedRow(), 4).equals("Hủy Chuyến") )
+             baoloi.setText("Chuyến bay đã tồn tại.");
+        else {
+            jDateChooserNgayBay.setEnabled(true);
+            jComboBox_GioDi1.setEnabled(true);
+            jComboBox_PhutDi.setEnabled(true);
+            jButtonSave.setEnabled(true);
+            jButtonCann.setEnabled(true);
+        }
+       // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        baoloi.setText("");// TODO add your handling code here:
+        int row= jTable1.getSelectedRow();
+        jTextFieldMaCB.setText((String) jTable1.getValueAt(row,0));
+        jComboBoxSHMB.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(), 1));
+        jComboBoxDuongBay.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(), 2));
+        String datebay = jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString();
+        jComboBox_GioDi1.setSelectedItem(datebay.substring(11, 13));   
+        jComboBox_PhutDi.setSelectedItem(datebay.substring(14, 16));
+        
+        datebay=datebay.substring(8,10)+"/"+datebay.substring(5,7)+"/"+datebay.substring(0,4);
+     
+         try {
+            java.util.Date  datetmp = new SimpleDateFormat("dd/MM/yyyy").parse(datebay);
+             jDateChooserNgayBay.setDate(datetmp);
+         } catch (ParseException ex) {
+             Logger.getLogger(GiaoDienChuyenBay.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         
+         
+         
+       
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        baoloi.setText("");// TODO add your handling code here:
+    }//GEN-LAST:event_formMouseClicked
+
+    private void jTextFieldMaCBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldMaCBMouseClicked
+        baoloi.setText("");// TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldMaCBMouseClicked
+
+    private void jComboBoxSHMBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxSHMBMouseClicked
+        baoloi.setText("");// TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxSHMBMouseClicked
+
+    private void jComboBoxDuongBayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxDuongBayMouseClicked
+        baoloi.setText("");// TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxDuongBayMouseClicked
+
+    private void jDateChooserNgayBayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooserNgayBayMouseClicked
+        baoloi.setText("");// TODO add your handling code here:
+    }//GEN-LAST:event_jDateChooserNgayBayMouseClicked
+
+    private void jButtonCannActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCannActionPerformed
+         baoloi.setText("");// TODO add your handling code here:
+         jTable1.setEnabled(true);
+         jTextFieldMaCB.setEnabled(false);
+        jComboBoxSHMB.setEnabled(false);
+        jComboBoxSHMB.setSelectedIndex(0);
+        jComboBoxDuongBay.setEnabled(false);
+        jDateChooserNgayBay.setEnabled(false);
+        jComboBox_GioDi1.setEnabled(false);
+        jComboBox_PhutDi.setEnabled(false);
+        jButtonSave.setEnabled(false);
+        jButtonCann.setEnabled(false);
+        jButtonEdit.setEnabled(true);
+        jButtonHC.setEnabled(true);
+    }//GEN-LAST:event_jButtonCannActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,12 +582,13 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel baoloi;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButtonADD;
     private javax.swing.JButton jButtonCann;
     private javax.swing.JButton jButtonDSVe;
+    private javax.swing.JButton jButtonEdit;
+    private javax.swing.JButton jButtonHC;
     private javax.swing.JButton jButtonSave;
     private javax.swing.JComboBox<String> jComboBoxDuongBay;
     private javax.swing.JComboBox<String> jComboBoxSHMB;
@@ -380,6 +602,7 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextFieldMaCB;
     // End of variables declaration//GEN-END:variables

@@ -3,21 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/PC/Desktop/New%20folder%20(2)/Phong-Ve-May-Bay/QLPV/src/connection/UpdateData.java</file>
-            <file>file:/C:/Users/PC/Desktop/New%20folder%20(2)/Phong-Ve-May-Bay/QLPV/src/view/DangNhap.java</file>
-            <file>file:/C:/Users/PC/Desktop/New%20folder%20(2)/Phong-Ve-May-Bay/QLPV/src/connection/LoadData.java</file>
-            <file>file:/C:/Users/PC/Desktop/New%20folder%20(2)/Phong-Ve-May-Bay/QLPV/src/view/GiaoDienDuongBay.java</file>
-            <file>file:/C:/Users/PC/Desktop/New%20folder%20(2)/Phong-Ve-May-Bay/QLPV/src/connection/DeleteData.java</file>
-            <file>file:/C:/Users/PC/Desktop/New%20folder%20(2)/Phong-Ve-May-Bay/QLPV/src/view/GiaoDienDangKy.java</file>
-            <file>file:/C:/Users/PC/Desktop/New%20folder%20(2)/Phong-Ve-May-Bay/QLPV/src/model/SanBay.java</file>
-            <file>file:/C:/Users/PC/Desktop/New%20folder%20(2)/Phong-Ve-May-Bay/QLPV/src/images/—Pngtree—employee%20icon%20vector%20illustration%20in_4257910.png</file>
-            <file>file:/C:/Users/PC/Desktop/New%20folder%20(2)/Phong-Ve-May-Bay/QLPV/src/view/GiaoDienQuanLy.java</file>
-            <file>file:/C:/Users/PC/Desktop/New%20folder%20(2)/Phong-Ve-May-Bay/QLPV/src/view/GiaoDienMayBay.java</file>
-            <file>file:/C:/Users/PC/Desktop/New%20folder%20(2)/Phong-Ve-May-Bay/QLPV/src/view/GiaoDienSuaThongTin.java</file>
-            <file>file:/C:/Users/PC/Desktop/New%20folder%20(2)/Phong-Ve-May-Bay/QLPV/src/connection/DataConnection.java</file>
-            <file>file:/C:/Users/PC/Desktop/New%20folder%20(2)/Phong-Ve-May-Bay/QLPV/src/view/GiaoDienNhanVien.java</file>
-            <file>file:/C:/Users/PC/Desktop/New%20folder%20(2)/Phong-Ve-May-Bay/QLPV/src/view/GiaoDienDSVe.java</file>
-            <file>file:/C:/Users/PC/Desktop/New%20folder%20(2)/Phong-Ve-May-Bay/QLPV/src/model/ChuyenBay.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Phong-Ve-May-Bay/QLPV/src/connection/UpdateData.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Phong-Ve-May-Bay/QLPV/src/connection/DataConnection.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Phong-Ve-May-Bay/QLPV/src/view/GiaoDienChuyenBay.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Phong-Ve-May-Bay/QLPV/src/model/ChuyenBay.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Phong-Ve-May-Bay/QLPV/src/view/GiaoDienDuongBay.java</file>
         </group>
     </open-files>
 </project-private>

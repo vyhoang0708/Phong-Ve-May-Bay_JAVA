@@ -48,6 +48,21 @@ public class LoadData {
         } catch (SQLException ex) {
             Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
         }
+    } public static void loadTableKhachHang() {
+        ResultSet rs = DataConnection.retrieveData("select * from dbo.KHACHHANG");
+        try {
+            while (rs.next()) {
+                KhachHang nv = new KhachHang(
+                        rs.getString(1).trim(),
+                        rs.getString(2).trim(),
+                        rs.getString(3).trim(),
+                        rs.getString(4).trim(),
+                        rs.getDate(5) );
+                Controller.arrayListKhachHang.add(nv);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     public static void loadTableDuongBay() {
         ResultSet rs = DataConnection.retrieveData("select * from dbo.DUONGBAY");
@@ -115,7 +130,7 @@ public class LoadData {
       public static ArrayList<Ve> loadTableVe(String maChuyenBay) {
 
         ArrayList<Ve> arrayListVe = new ArrayList<Ve>();
-        ResultSet rs = DataConnection.retrieveData("select * from dbo.Ve where MaCB like '%" + maChuyenBay + "%'");
+        ResultSet rs = DataConnection.retrieveData("select * from dbo.Ve where MaCB like '" + maChuyenBay + "'");
         try {
             while (rs.next()) {
                 Ve ve = new Ve(
@@ -135,7 +150,8 @@ public class LoadData {
         controller.Controller.arrayListSanBay.removeAll(controller.Controller.arrayListSanBay);
         controller.Controller.arrayListDuongBay.removeAll(controller.Controller.arrayListDuongBay);
         controller.Controller.arrayListTaiKhoan.removeAll(controller.Controller.arrayListTaiKhoan);
-        controller.Controller.arrayListMayBay.removeAll(controller.Controller.arrayListMayBay);    
+        controller.Controller.arrayListMayBay.removeAll(controller.Controller.arrayListMayBay); 
+        controller.Controller.arrayListKhachHang.removeAll(controller.Controller.arrayListKhachHang); 
         controller.Controller.arrayListNhanVien.removeAll(controller.Controller.arrayListNhanVien);
          controller.Controller.arrayListChuyenBay.removeAll(controller.Controller.arrayListChuyenBay);
 
@@ -145,6 +161,7 @@ public class LoadData {
         loadTableNhanVien();
         loadTableMayBay();
         loadTableChuyenBay();
+        loadTableKhachHang();
     }
 
 }

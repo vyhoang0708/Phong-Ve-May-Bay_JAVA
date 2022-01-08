@@ -393,7 +393,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
              }
         }
            if(!controller.Controller.arrayListTimChuyenBay.isEmpty()){
-            new GiaoDienChonChuyenBay().setVisible(true);
+              new GiaoDienChonChuyenBay().setVisible(true);
              this.dispose();
            }else
                 baoLoi.setText("Khong Tim Thay Chuyen Bay Hop Le");

@@ -5,8 +5,6 @@
 package view;
 
 import connection.LoadData;
-import static connection.UpdateData.updateChuyenBay;
-import controller.Controller;
 import java.awt.Color;
 import java.sql.Time;
 import java.text.ParseException;

@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.Controller;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Label;
@@ -24,8 +25,12 @@ public class GiaoDienDSVe extends javax.swing.JFrame {
     /**
      * Creates new form GiaoDienDSVe
      */
-    public GiaoDienDSVe() {
+    public GiaoDienDSVe() {      
+
+        
         initComponents();
+               
+
         ArrayList<JButton> listGhe= new ArrayList<JButton>();
         controller.Controller.dsGheChon.removeAll(controller.Controller.dsGheChon);    
         ArrayList<String> mapGhe= new ArrayList<String>();
@@ -37,12 +42,13 @@ public class GiaoDienDSVe extends javax.swing.JFrame {
         for (int i = 0; i < soGhe; i++) {
             mapGhe.add("0");
         }
+
         for (Ve Ve :controller.Controller.cb.getArrayListVe() ) {
             mapGhe.set(Integer.parseInt(Ve.getMaGhe()),Ve.getMaGhe());
         }
 	int chiso=1;
         int kichthuoc=80;
-        System.out.println("ALLLAL");
+         
          for(int i=0; ;i=i+kichthuoc+10){
 	  for(int j=1;j<=6;j++)
           {
@@ -69,16 +75,28 @@ public class GiaoDienDSVe extends javax.swing.JFrame {
     }
 
     private void chonGhe(java.awt.event.ActionEvent evt,JButton btn) {
-        if(controller.Controller.dsGheChon.size()+1<controller.Controller.soLuongVeChon){
-                btn.setBackground(Color.GREEN);
-                controller.Controller.dsGheChon.add(btn.getText());
+        if(Controller.tk.getLoaiTaiKhoan().equals("guest"))
+        {
+                for (String st :controller.Controller.dsGheChon) {
+                   if(btn.getText().equals(st)){
+                   btn.setBackground(new java.awt.Color(240, 240, 240));
+                   controller.Controller.dsGheChon.remove(st);
+                   return;
+                   }
+               }
+               if(controller.Controller.dsGheChon.size()+1<controller.Controller.soLuongVeChon){
+                       btn.setBackground(Color.GREEN);
+                       controller.Controller.dsGheChon.add(btn.getText());
+               }
+               else{
+                   controller.Controller.dsGheChon.add(btn.getText());
+                   controller.Controller.dsVeChon.removeAll(controller.Controller.dsVeChon);
+                   new GiaoDienThongTinVe().setVisible(true);    
+                   this.dispose();
+           }
+        
         }
-        else{
-             controller.Controller.dsGheChon.add(btn.getText());
-            controller.Controller.dsVeChon.removeAll(controller.Controller.dsVeChon);
-            new GiaoDienThongTinVe().setVisible(true);    
-            this.dispose();
-    }
+       
             
     }
     /**

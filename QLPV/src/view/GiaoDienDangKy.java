@@ -4,6 +4,7 @@
  */
 package view;
 
+import com.toedter.calendar.JDateChooser;
 import connection.LoadData;
 import controller.Controller;
 import java.util.Date;
@@ -337,8 +338,8 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
        }
        TaiKhoan tk = new TaiKhoan(ipTenDN.getText(), ipPass.getText(), "guest");
         Date dateFromDateChooser = jDateNgaySinh.getDate();
-        String dateString = String.format("%1$td/%1$tm/%1$tY", dateFromDateChooser);
-        KhachHang kh = new KhachHang(ipSDT.getText(),ipName.getText(),ipTenDN.getText(), ipEmail.getText(),dateString);
+       
+        KhachHang kh = new KhachHang(ipSDT.getText(),ipName.getText(),ipTenDN.getText(), ipEmail.getText(),new java.sql.Date(jDateNgaySinh.getDate().getTime()));
         
         connection.InsertData.insertTaiKhoan(tk);
         connection.InsertData.insertKhachHang(kh);

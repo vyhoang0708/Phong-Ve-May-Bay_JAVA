@@ -58,7 +58,7 @@ public class InsertData {
             ps.setString(1, kh.getSDT());
             ps.setString(2, kh.getTenDangNhap());
             ps.setString(3,kh.getTenKhachHang());
-            ps.setString(4, kh.getNgaySinh());
+            ps.setDate(4, kh.getNgaySinh());
             ps.setString(5, kh.getEmail());
             
             if (ps.executeUpdate() > 0) {

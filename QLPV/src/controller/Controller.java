@@ -17,6 +17,7 @@ public class Controller {
     public static ArrayList<MayBay> arrayListMayBay = new ArrayList<MayBay>();
     public static ArrayList<SanBay> arrayListSanBay= new ArrayList<SanBay>();
     public static ArrayList<ChuyenBay> arrayListChuyenBay = new ArrayList<ChuyenBay>();
+    public static ArrayList<KhachHang> arrayListKhachHang = new ArrayList<KhachHang>();
     public static TaiKhoan tk = new TaiKhoan();
     public static ChuyenBay cb = new ChuyenBay();
     public static ArrayList<ChuyenBay> arrayListTimChuyenBay = new ArrayList<ChuyenBay>();

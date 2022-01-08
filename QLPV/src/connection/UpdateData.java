@@ -87,42 +87,7 @@ public class UpdateData {
         System.out.println("sửa nhân viên thất bại");
         return false;
     }
-     public static boolean updateChuyenBay(ChuyenBay cb) {
-        String sqlCommand = "update dbo.CHUYENBAY set  NGAYBAY=? , GIOBAY = ? " + " where maChuyenBay=?"  ;
-         
-        try { 
-            DataConnection.createStatement();
-            PreparedStatement  ps = DataConnection.connection.prepareStatement(sqlCommand);
- 
-            ps.setDate(1, cb.getNgayBay());
-            ps.setTime(2, cb.getGioBay());
-            ps.setString(3, cb.getMaChuyenBay());
-            return ps.executeUpdate() > 0;
-
-        } catch (SQLException ex) {
-            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println("sửa chuyến bay thất bại");
-        return false;
-    }
-      public static boolean huyChuyenBay(String maCB) {
-        String sqlCommand = "update dbo.CHUYENBAY set   TRANGTHAI = ? " + " where maChuyenBay=?"  ;
-         
-        try { 
-            DataConnection.createStatement();
-            PreparedStatement  ps = DataConnection.connection.prepareStatement(sqlCommand);
- 
-            ps.setInt(1, 1);
-            ps.setString(2, maCB);
-            return ps.executeUpdate() > 0;
-
-        } catch (SQLException ex) {
-            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println("Hủy chuyến bay thất bại");
-        return false;
-    }
-      public static boolean doiMatKhau(TaiKhoan tk, String mk ) {
+       public static boolean doiMatKhau(TaiKhoan tk, String mk ) {
         String sqlCommand = "update dbo.TAIKHOAN set   MATKHAU = ? " + " where tenDangNhap=?"  ;
          
         try { 
@@ -157,6 +122,89 @@ public class UpdateData {
             Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("sửa thông tin thất bại");
+        return false;
+    }
+     public static boolean updateChuyenBay(ChuyenBay cb) {
+        String sqlCommand = "update dbo.CHUYENBAY set  NGAYBAY=? , GIOBAY = ? " + " where maChuyenBay=?"  ;
+         
+        try { 
+            DataConnection.createStatement();
+            PreparedStatement  ps = DataConnection.connection.prepareStatement(sqlCommand);
+ 
+            ps.setDate(1, cb.getNgayBay());
+            ps.setTime(2, cb.getGioBay());
+            ps.setString(3, cb.getMaChuyenBay());
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("sửa chuyến bay thất bại");
+        return false;
+    }
+      public static boolean huyChuyenBay(String maCB) {
+        String sqlCommand = "update dbo.CHUYENBAY set   TRANGTHAI = ? " + " where maChuyenBay=?"  ;
+         
+        try { 
+            DataConnection.createStatement();
+            PreparedStatement  ps = DataConnection.connection.prepareStatement(sqlCommand);
+ 
+            ps.setInt(1, ChuyenBay.HUYCHUYEN);
+            ps.setString(2, maCB);
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Hủy chuyến bay thất bại");
+        return false;
+    }
+      public static boolean capNhatHoanTat(String maCB) {
+        String sqlCommand = "update dbo.CHUYENBAY set   TRANGTHAI = ? " + " where maChuyenBay=?"  ;
+         
+        try { 
+            DataConnection.createStatement();
+            PreparedStatement  ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setInt(1, ChuyenBay.HOANTAT);
+            ps.setString(2, maCB);
+            System.out.println("Chuyen Bay "+ maCB +" hoàn tất");
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+      public static boolean capNhatHetVe(String maCB) {
+        String sqlCommand = "update dbo.CHUYENBAY set   TRANGTHAI = ? " + " where maChuyenBay=?"  ;
+         
+        try { 
+            DataConnection.createStatement();
+            PreparedStatement  ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setInt(1, ChuyenBay.HETVE);
+            ps.setString(2, maCB);
+            System.out.println("Chuyen Bay "+ maCB +" hết vé");
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+      public static boolean capNhatConVe(String maCB) {
+        String sqlCommand = "update dbo.CHUYENBAY set   TRANGTHAI = ? " + " where maChuyenBay=?"  ;
+         
+        try { 
+            DataConnection.createStatement();
+            PreparedStatement  ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setInt(1, ChuyenBay.CONVE);
+            ps.setString(2, maCB);
+            System.out.println("Chuyen Bay "+ maCB +" còn vé");
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return false;
     }
 }

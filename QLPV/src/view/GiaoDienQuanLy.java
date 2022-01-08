@@ -15,6 +15,9 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
      */
     public GiaoDienQuanLy() {
         initComponents();
+        if(controller.Controller.tk.getLoaiTaiKhoan().equals("staff")){
+              btnNhanVien.setEnabled(false);
+        }
     }
 
     /**
@@ -36,7 +39,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         btnTimChuyen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Quản Lý");
+        setTitle("HOME");
         setLocation(new java.awt.Point(0, 0));
 
         btnNhanVien.setBackground(new java.awt.Color(153, 153, 255));
@@ -207,6 +210,8 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
 
     private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
         // TODO add your handling code here:
+         new GiaoDienKhachHang().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnKhachHangActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed

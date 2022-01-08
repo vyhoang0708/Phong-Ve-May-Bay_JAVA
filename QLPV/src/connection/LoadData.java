@@ -2,17 +2,18 @@ package connection;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.TaiKhoan;
 import controller.Controller;
-import java.util.concurrent.ConcurrentHashMap;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 import model.*;
+import view.GiaoDienTimChuyenBay;
         
 /**
  *
@@ -111,6 +112,8 @@ public class LoadData {
     }
       public static void loadTableChuyenBay() {
         ResultSet rs = DataConnection.retrieveData("select * from dbo.CHUYENBAY");
+      
+        Date datenow = Calendar.getInstance().getTime();
         try {
             while (rs.next()) {
                 ChuyenBay cb= new ChuyenBay(
@@ -121,6 +124,15 @@ public class LoadData {
                         rs.getTime(5),
                         rs.getInt(6));
                 cb.setArrayListVe(loadTableVe(cb.getMaChuyenBay().trim()));
+                if(cb.getTrangThai()==ChuyenBay.CONVE||cb.getTrangThai()==ChuyenBay.HETVE){
+                      Date tmp=new Date(cb.getNgayBay().getYear(), cb.getNgayBay().getMonth(), cb.getNgayBay().getDate(),
+                               cb.getGioBay().getHours(), cb.getGioBay().getMinutes());
+                       if(datenow.after(tmp) ) {
+                           connection.UpdateData.capNhatHoanTat(cb.getMaChuyenBay());
+                           cb.setTrangThai(ChuyenBay.HOANTAT);
+                    }
+                }
+                
                 controller.Controller.arrayListChuyenBay.add(cb);
             }
         } catch (SQLException ex) {
@@ -153,7 +165,7 @@ public class LoadData {
         controller.Controller.arrayListMayBay.removeAll(controller.Controller.arrayListMayBay); 
         controller.Controller.arrayListKhachHang.removeAll(controller.Controller.arrayListKhachHang); 
         controller.Controller.arrayListNhanVien.removeAll(controller.Controller.arrayListNhanVien);
-         controller.Controller.arrayListChuyenBay.removeAll(controller.Controller.arrayListChuyenBay);
+        controller.Controller.arrayListChuyenBay.removeAll(controller.Controller.arrayListChuyenBay);
 
         loadTableTaiKhoan();  
         loadTableSanBay(); 
@@ -162,6 +174,7 @@ public class LoadData {
         loadTableMayBay();
         loadTableChuyenBay();
         loadTableKhachHang();
+        
     }
 
 }

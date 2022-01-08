@@ -36,7 +36,7 @@ public class InsertData {
             ps.setString(1, nv.getSDT());
             ps.setString(2, nv.getTenNhanVien());
             ps.setString(3, nv.getTenDangNhap());
-            ps.setInt(5, nv.getLuong());
+            ps.setInt(4, nv.getLuong());
 
             if (ps.executeUpdate() > 0) {
                 System.out.println("thêm nhân viên thành công");
@@ -58,8 +58,8 @@ public class InsertData {
             ps.setString(1, kh.getSDT());
             ps.setString(2, kh.getTenDangNhap());
             ps.setString(3,kh.getTenKhachHang());
-            ps.setDate(4, kh.getNgaySinh());
-            ps.setString(5, kh.getEmail());
+            ps.setString(4, kh.getEmail());
+            ps.setDate(5, kh.getNgaySinh());
             
             if (ps.executeUpdate() > 0) {
                 System.out.println("thêm khach hang thành công");
@@ -171,7 +171,7 @@ public class InsertData {
                     ps.setString(3, ve.getsDT());
                     ps.setString(4, ve.getMaGhe());
         if (ps.executeUpdate() > 0) {
-                System.out.println("thêm Ghe thành công");
+                System.out.println("thêm Ve thành công");
                
             }
                 } catch (SQLException ex) {

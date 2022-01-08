@@ -72,6 +72,7 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
         baoLoi = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("QUẢN LÝ MÁY BAY");
         setLocation(new java.awt.Point(0, 0));
         setResizable(false);
         setSize(new java.awt.Dimension(723, 352));
@@ -129,13 +130,13 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Số hiệu máy bay");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Hãng máy bay");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Số ghế");
 
         jTextSHMB.setEnabled(false);
@@ -232,7 +233,7 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jTextSHMB, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(0, 14, Short.MAX_VALUE))))))
+                                .addGap(0, 23, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

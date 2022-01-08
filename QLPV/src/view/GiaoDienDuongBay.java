@@ -8,12 +8,10 @@ import connection.LoadData;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import model.DuongBay;
-import view.GiaoDienNhanVien;
 import static controller.Controller.*;
 import javax.swing.JOptionPane;
 import model.ChuyenBay;
 import model.SanBay;
-import model.TaiKhoan;
 
 /**
  *
@@ -75,6 +73,7 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
         baoLoi = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("QUẢN LÝ ĐƯỜNG BAY");
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);

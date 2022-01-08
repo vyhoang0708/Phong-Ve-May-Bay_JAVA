@@ -59,9 +59,10 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
         baoloiXacThuc = new javax.swing.JLabel();
         ipXacThuc = new javax.swing.JPasswordField();
         jDateNgaySinh = new com.toedter.calendar.JDateChooser();
+        baoloiNgaySinh = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Đăng Kí");
+        setTitle("ĐĂNG KÝ");
         setLocation(new java.awt.Point(0, 0));
 
         jLabel1.setText("Tên Đăng Nhập");
@@ -73,8 +74,8 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
         jLabel4.setText("Ngày Sinh");
 
         ipEmail.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ipEmailMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ipEmailMousePressed(evt);
             }
         });
         ipEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -85,16 +86,16 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
 
         ipName.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         ipName.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ipNameMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ipNameMousePressed(evt);
             }
         });
 
         jLabel5.setText("SDT");
 
         ipSDT.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ipSDTMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ipSDTMousePressed(evt);
             }
         });
         ipSDT.addActionListener(new java.awt.event.ActionListener() {
@@ -104,8 +105,8 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
         });
 
         ipTenDN.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ipTenDNMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ipTenDNMousePressed(evt);
             }
         });
 
@@ -148,8 +149,8 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
         baoloiTenDN.setForeground(new java.awt.Color(255, 51, 51));
 
         ipPass.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ipPassMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ipPassMousePressed(evt);
             }
         });
 
@@ -160,12 +161,20 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
         baoloiXacThuc.setForeground(new java.awt.Color(255, 51, 51));
 
         ipXacThuc.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ipXacThucMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ipXacThucMousePressed(evt);
             }
         });
 
         jDateNgaySinh.setDateFormatString("dd/MM/yyyy");
+        jDateNgaySinh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jDateNgaySinhMousePressed(evt);
+            }
+        });
+
+        baoloiNgaySinh.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        baoloiNgaySinh.setForeground(new java.awt.Color(255, 51, 51));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,18 +185,6 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(jDateNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(baoloiSDT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(ipSDT, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
@@ -222,7 +219,23 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
                                             .addComponent(ipTenDN, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(ipPass, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(ipXacThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 9, Short.MAX_VALUE))))))
+                                        .addGap(0, 9, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jDateNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(27, 27, 27)
+                                        .addComponent(jLabel5))
+                                    .addComponent(baoloiNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(ipSDT, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(32, 32, 32)
+                                        .addComponent(baoloiSDT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -230,13 +243,13 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
                                 .addComponent(jLabel6))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(169, 169, 169)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(20, 20, 20)))))
+                                .addComponent(jButton1)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,9 +269,14 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addComponent(jLabel5)
                         .addComponent(ipSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(1, 1, 1)
-                .addComponent(baoloiSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(baoloiSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(baoloiNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ipEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
@@ -283,11 +301,11 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(baoloiXacThuc)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
@@ -301,80 +319,110 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
     private void ipSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipSDTActionPerformed
       
     }//GEN-LAST:event_ipSDTActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-       if(ipName.getText().length() == 0)
-           baoloiName.setText("Họ Tên không được để trống");
-        String str = ipSDT.getText();
-       if (str.length() != 10) 
-            baoloiSDT.setText("Số điện thoại không hợp lệ");
-       for (int i = 0; i < str.length(); i++) {
-            if (Character.isLetter(str.charAt(i)))
-                 baoloiSDT.setText("Số điện thoại không hợp lệ");
-        } // TODO add your handling code here:
-       
-       if(ipEmail.getText().length() == 0)
-            baoloimail.setText("Email không hợp lệ");
-       
-       String name = ipTenDN.getText();
-       if(name.length() == 0)
-           baoloiTenDN.setText("Tên Đăng Nhập không được để trống");
-       else{
-           LoadData.loadTableTaiKhoan();
-           int index=-1;
-            for (TaiKhoan tk : Controller.arrayListTaiKhoan) {
-                 if (name.equals(tk.getTenDangNhap().trim())) 
-                     index = Controller.arrayListTaiKhoan.indexOf(tk);
-            }
-            if(index != -1)
-                baoloiTenDN.setText("Tên Đăng Nhập đã tồn tại");
+    private boolean checkIP(){
+        
+        String name = ipTenDN.getText();
+       if(ipName.getText().length() == 0){
+            baoloiName.setText("Họ và tên không được để trống");
+            return false;
        }
-       
-       if(ipPass.getText().length() ==0)
-           baoloiMK.setText("Mật khẩu không được để trống");
+        if(jDateNgaySinh.getDate()==(null)){
+            baoloiNgaySinh.setText("Vui Lòng Chọn Ngày Sinh");
+            return false;
+        }else
+             baoloiNgaySinh.setText("");
+        String str = ipSDT.getText();
+       if (str.length() != 10) {
+            baoloiSDT.setText("Số điện thoại không hợp lệ");
+            return false;
+       }
+           
+       for (int i = 0; i < str.length(); i++) {
+            if (!Character.isDigit(str.charAt(i))){
+                 baoloiSDT.setText("Số điện thoại không hợp lệ");
+                 return false;
+            }
+        } 
+        if(ipEmail.getText().length() == 0){
+            baoloimail.setText("Email không được để trống");
+            return false;
+       }
+       if(name.length() == 0){
+            baoloiTenDN.setText("Ten đăng nhập không được để trống");
+            return false;
+       }
+        new LoadData();
+         for (TaiKhoan tk : Controller.arrayListTaiKhoan) 
+              if (name.equals(tk.getTenDangNhap().trim())) {
+                   baoloiTenDN.setText("Tên Đăng Nhập đã tồn tại");
+                   return false;
+              }
+          
+       if(ipPass.getText().length() ==0){
+            baoloiMK.setText("Mật khẩu không được để trống");
+            return false;
+       }
+          
        if(!ipXacThuc.getText().equals(ipPass.getText()) ) {
            baoloiXacThuc.setText("Xác thực mật khẩu không trùng khớp");
+           return false;
        }
-       TaiKhoan tk = new TaiKhoan(ipTenDN.getText(), ipPass.getText(), "guest");
-        Date dateFromDateChooser = jDateNgaySinh.getDate();
+    
+    return true;
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        if(checkIP()){
+                TaiKhoan tk = new TaiKhoan(ipTenDN.getText(), ipPass.getText(), "guest");
+                KhachHang kh = new KhachHang(ipSDT.getText(),ipName.getText(),ipTenDN.getText(), ipEmail.getText(),new java.sql.Date(jDateNgaySinh.getDate().getTime()));
+
+                connection.InsertData.insertTaiKhoan(tk);
+                connection.InsertData.insertKhachHang(kh);
+                new DangNhap().setVisible(true);
+                this.dispose();
+        }
        
-        KhachHang kh = new KhachHang(ipSDT.getText(),ipName.getText(),ipTenDN.getText(), ipEmail.getText(),new java.sql.Date(jDateNgaySinh.getDate().getTime()));
-        
-        connection.InsertData.insertTaiKhoan(tk);
-        connection.InsertData.insertKhachHang(kh);
-        new DangNhap().setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void ipSDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ipSDTMouseClicked
-        baoloiSDT.setText("");// TODO add your handling code here:
-    }//GEN-LAST:event_ipSDTMouseClicked
-
-    private void ipEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ipEmailMouseClicked
-        baoloimail.setText(""); // TODO add your handling code here:
-    }//GEN-LAST:event_ipEmailMouseClicked
-
-    private void ipNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ipNameMouseClicked
-        baoloiName.setText("");// TODO add your handling code here:
-    }//GEN-LAST:event_ipNameMouseClicked
-
-    private void ipTenDNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ipTenDNMouseClicked
-        baoloiTenDN.setText("");// TODO add your handling code here:
-    }//GEN-LAST:event_ipTenDNMouseClicked
-
-    private void ipPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ipPassMouseClicked
-        baoloiMK.setText("");// TODO add your handling code here:
-    }//GEN-LAST:event_ipPassMouseClicked
-
-    private void ipXacThucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ipXacThucMouseClicked
-         baoloiXacThuc.setText("");// TODO add your handling code here:
-    }//GEN-LAST:event_ipXacThucMouseClicked
 
     private void jLabel9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MousePressed
         new DangNhap().setVisible(true);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jLabel9MousePressed
+
+    private void ipNameMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ipNameMousePressed
+        // TODO add your handling code here:
+        baoloiName.setText("");
+    }//GEN-LAST:event_ipNameMousePressed
+
+    private void ipSDTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ipSDTMousePressed
+        // TODO add your handling code here:
+        baoloiSDT.setText("");
+    }//GEN-LAST:event_ipSDTMousePressed
+
+    private void ipEmailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ipEmailMousePressed
+        // TODO add your handling code here:
+         baoloimail.setText("");
+    }//GEN-LAST:event_ipEmailMousePressed
+
+    private void ipTenDNMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ipTenDNMousePressed
+        // TODO add your handling code here:
+         baoloiTenDN.setText("");
+    }//GEN-LAST:event_ipTenDNMousePressed
+
+    private void ipPassMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ipPassMousePressed
+        // TODO add your handling code here:
+        baoloiMK.setText("");
+    }//GEN-LAST:event_ipPassMousePressed
+
+    private void ipXacThucMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ipXacThucMousePressed
+        // TODO add your handling code here:
+            baoloiXacThuc.setText("");
+    }//GEN-LAST:event_ipXacThucMousePressed
+
+    private void jDateNgaySinhMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateNgaySinhMousePressed
+        // TODO add your handling code here:
+          baoloiNgaySinh.setText("");
+    }//GEN-LAST:event_jDateNgaySinhMousePressed
 
     
     /**
@@ -415,6 +463,7 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel baoloiMK;
     private javax.swing.JLabel baoloiName;
+    private javax.swing.JLabel baoloiNgaySinh;
     private javax.swing.JLabel baoloiSDT;
     private javax.swing.JLabel baoloiTenDN;
     private javax.swing.JLabel baoloiXacThuc;

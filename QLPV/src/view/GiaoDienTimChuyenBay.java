@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import model.ChuyenBay;
 import static controller.Controller.*;
 
+
 /**
  *
  * @author PC
@@ -28,6 +29,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         initComponents();  
        if(Controller.tk.getLoaiTaiKhoan().equals("guest")){
             jLabelName.setText(Controller.tk.getTenDangNhap());
+            jButton7.setVisible(false);
        }
        else{
             jPanel1.setVisible(false);
@@ -85,9 +87,10 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         baoLoi = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Tìm Chuyến Bay");
+        setTitle("TÌM CHUYẾN BAY");
         setLocation(new java.awt.Point(0, 0));
         setName("frame8"); // NOI18N
 
@@ -222,6 +225,9 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
         baoLoi.setForeground(new java.awt.Color(255, 0, 0));
 
+        jButton7.setBackground(new java.awt.Color(255, 255, 255));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -292,8 +298,13 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -301,7 +312,9 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
+                        .addContainerGap()
+                        .addComponent(jButton7)
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRadioButton2)
                             .addComponent(jRadioButton1)))
@@ -466,6 +479,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
     private javax.swing.JLabel baoLoi;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private com.toedter.calendar.JDateChooser jDateChooser1;

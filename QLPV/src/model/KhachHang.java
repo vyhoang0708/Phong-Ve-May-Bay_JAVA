@@ -12,21 +12,23 @@ import java.sql.Date;
  */
 public class KhachHang {
     private String SDT;
-    private String tenKhachHang;
     private  String tenDangNhap;
+    private String tenKhachHang;
     private  String email;
     private  Date ngaySinh;
 
     public KhachHang() {
     }
 
-    public KhachHang(String SDT, String tenKhachHang, String tenDangNhap, String email, Date ngaySinh) {
+    public KhachHang(String SDT, String tenDangNhap, String tenKhachHang, String email, Date ngaySinh) {
         this.SDT = SDT;
-        this.tenKhachHang = tenKhachHang;
         this.tenDangNhap = tenDangNhap;
+        this.tenKhachHang = tenKhachHang;
         this.email = email;
         this.ngaySinh = ngaySinh;
     }
+
+   
 
     
 

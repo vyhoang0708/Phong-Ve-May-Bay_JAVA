@@ -31,7 +31,7 @@ public class DataConnection {
     }
 
     public static void createStatement() {
-        String url = "jdbc:sqlserver://116.109.71.88:1433;databaseName=QLPV";
+        String url = "jdbc:sqlserver://;databaseName=QLPV";
         //116.109.182.43,1433
 
         String user = "sa";

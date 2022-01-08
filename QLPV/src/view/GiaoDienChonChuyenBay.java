@@ -6,8 +6,6 @@ package view;
 
 import java.awt.Color;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import model.ChuyenBay;
 
@@ -55,8 +53,10 @@ public class GiaoDienChonChuyenBay extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         back = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CHỌN CHUYẾN BAY");
         setLocation(new java.awt.Point(0, 0));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -82,6 +82,9 @@ public class GiaoDienChonChuyenBay extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setText("Chọn Chuyến Bay");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,13 +96,17 @@ public class GiaoDienChonChuyenBay extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(202, 202, 202)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(back)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(back)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(170, Short.MAX_VALUE))
@@ -159,6 +166,7 @@ public class GiaoDienChonChuyenBay extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

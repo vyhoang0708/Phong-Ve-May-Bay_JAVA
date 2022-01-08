@@ -13,12 +13,17 @@ import java.util.ArrayList;
  * @author PC
  */
 public class ChuyenBay {
+    public static final int CONVE=0;
+    public static final int HETVE=1;
+    public static final int HUYCHUYEN=2;
+    public static final int HOANTAT=3;
+    
     private String maChuyenBay;
     private String SHMB;
     private DuongBay maDuongBay;
     private Date ngayBay;
     private Time gioBay;
-    private int trangThai;
+    private int trangThai; // 0: còn vé , 1: hết vé ,2: huy chuyến 
     private ArrayList<Ve> arrayListVe = new ArrayList<Ve>();
 
     public ChuyenBay() {

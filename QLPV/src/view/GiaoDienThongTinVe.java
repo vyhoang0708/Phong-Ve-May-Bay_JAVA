@@ -4,6 +4,7 @@
  */
 package view;
 
+import connection.LoadData;
 import model.Ve;
 import static controller.Controller.*;
 
@@ -36,25 +37,28 @@ public class GiaoDienThongTinVe extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldSDT = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         Title = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         lableMaGhe = new javax.swing.JLabel();
+        baoLoi = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("NHẬP THÔNG TIN VÉ");
         setLocation(new java.awt.Point(0, 0));
 
         jLabel2.setText("SĐT");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldSDT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldSDTActionPerformed(evt);
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         jLabel3.setText("Tên Hành Khách");
 
         jLabel4.setText("Mã Ghế");
@@ -62,12 +66,17 @@ public class GiaoDienThongTinVe extends javax.swing.JFrame {
         Title.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Title.setText("Title");
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jButton1.setText("Tiếp Theo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        lableMaGhe.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+
+        baoLoi.setForeground(new java.awt.Color(255, 51, 51));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,8 +89,8 @@ public class GiaoDienThongTinVe extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldName)
+                    .addComponent(jTextFieldSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(86, 86, 86))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,8 +100,11 @@ public class GiaoDienThongTinVe extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lableMaGhe, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lableMaGhe, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(baoLoi, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(146, 146, 146)
                         .addComponent(jButton1)))
@@ -108,41 +120,66 @@ public class GiaoDienThongTinVe extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)))
+                        .addComponent(jTextFieldSDT, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lableMaGhe, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
-                .addComponent(jButton1)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(baoLoi, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSDTActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
+    }//GEN-LAST:event_jTextFieldSDTActionPerformed
+       private boolean checkIP(){
+           if(jTextFieldName.getText().length() == 0){
+                baoLoi.setText("Họ Tên không được để trống");
+                return false;
+        }
+           
+        String str = jTextFieldSDT.getText();
+       if (str.length() != 10) {
+            baoLoi.setText("Số điện thoại không hợp lệ");
+            return false;
+       }
+            
+       for (int i = 0; i < str.length(); i++) 
+            if (!Character.isDigit(str.charAt(i))){
+                baoLoi.setText("Số điện thoại không hợp lệ");
+                return false;
+        } 
+       return true;
+       }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        dsVeChon.add(new Ve(cb.getMaChuyenBay(),jTextField1.getText(),jTextField2.getText(),dsGheChon.get(dsVeChon.size() )));
-        if((dsVeChon.size())<dsGheChon.size()){
-             new GiaoDienThongTinVe().setVisible(true);
-             this.dispose();
-        }
-        else{
-            
-            connection.InsertData.insertVe(dsVeChon);
-            dsVeChon.removeAll(dsVeChon);
-            new GiaoDienTimChuyenBay().setVisible(true);
-            this.dispose();
+        if(checkIP()){
+                dsVeChon.add(new Ve(cb.getMaChuyenBay(),jTextFieldSDT.getText(),jTextFieldName.getText(),dsGheChon.get(dsVeChon.size() )));
+                if((dsVeChon.size())<dsGheChon.size()){
+                     new GiaoDienThongTinVe().setVisible(true);
+                     this.dispose();
+                }
+                else{
+
+                    connection.InsertData.insertVe(dsVeChon);
+                    if(cb.getSoGheTrong()==soLuongVeChon){
+                        connection.UpdateData.capNhatHetVe(cb.getMaChuyenBay());
+                    }
+                    dsVeChon.removeAll(dsVeChon);
+                    new GiaoDienTimChuyenBay().setVisible(true);
+                    this.dispose();
+                }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -183,12 +220,13 @@ public class GiaoDienThongTinVe extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
+    private javax.swing.JLabel baoLoi;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextFieldName;
+    private javax.swing.JTextField jTextFieldSDT;
     private javax.swing.JLabel lableMaGhe;
     // End of variables declaration//GEN-END:variables
 }

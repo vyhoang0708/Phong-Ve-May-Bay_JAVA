@@ -71,6 +71,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
         jTextFieldTenDN = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("QUẢN LÝ NHÂN VIÊN");
         setLocation(new java.awt.Point(366, 192));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -78,6 +79,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         jLabel1.setText("Ten Nhan Vien");
 
         jTextFieldName.setEnabled(false);
@@ -105,6 +107,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
             }
         });
 
+        jButtonAdd.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonAdd.setText("Thêm");
         jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +115,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
             }
         });
 
+        jButtonDel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonDel.setText("Xóa");
         jButtonDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +123,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
             }
         });
 
+        jButtonEdit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonEdit.setText("Sửa");
         jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +131,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
             }
         });
 
+        jButtonSave.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jButtonSave.setText("Lưu");
         jButtonSave.setEnabled(false);
         jButtonSave.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +140,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
             }
         });
 
+        jButtonCancel.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jButtonCancel.setText("Hủy");
         jButtonCancel.setEnabled(false);
         jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -186,59 +193,57 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(209, 209, 209)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButtonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(32, 32, 32)
-                                        .addComponent(jButtonEdit)
-                                        .addGap(32, 32, 32)
-                                        .addComponent(jButtonDel))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(baoloi, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(25, 25, 25))))
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(209, 209, 209)
+                .addComponent(jLabel4)
+                .addContainerGap(320, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addGap(50, 50, 50)
-                                                .addComponent(jLabel2)))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(4, 4, 4)
-                                            .addComponent(jLabel5))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextFieldLuong)
-                                    .addComponent(jTextFieldSDT)
-                                    .addComponent(jTextFieldName)
-                                    .addComponent(jTextFieldTenDN, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                                .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(baoloi, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(50, 50, 50)
+                                        .addComponent(jLabel2)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(4, 4, 4)
+                                    .addComponent(jLabel5))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldLuong)
+                            .addComponent(jTextFieldSDT)
+                            .addComponent(jTextFieldName)
+                            .addComponent(jTextFieldTenDN, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jButtonAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonEdit)
+                        .addGap(32, 32, 32)
+                        .addComponent(jButtonDel)))
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel4))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
                     .addComponent(jButton7))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -403,7 +408,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
         else{
             int row = jTable1.getSelectedRow();
             NhanVien nv= new NhanVien(jTextFieldSDT.getText(),jTextFieldName.getText(), jTextFieldTenDN.getText(),Integer.parseInt(jTextFieldLuong.getText()) );
-            TaiKhoan tk=new TaiKhoan(jTextFieldTenDN.getText(),jTextFieldSDT.getText(),"admin");
+            TaiKhoan tk=new TaiKhoan(jTextFieldTenDN.getText(),jTextFieldSDT.getText(),"staff");
            if (jTable1.getSelectedRow()==-1){
             
                 for (NhanVien nvv : arrayListNhanVien)
@@ -416,8 +421,9 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
                         baoloi.setText("Tên đăng nhập đã tồn tại!");
                         return;
                     }
-                connection.InsertData.insertNhanVien(nv);
                 connection.InsertData.insertTaiKhoan(tk);
+                connection.InsertData.insertNhanVien(nv);
+                
                 showData();
                 
                 jTable1.setEnabled(true);

@@ -100,5 +100,22 @@ public class DeleteData {
         System.out.println("xóa đường bay thất bại");
         return false;
     }
-     
+     public static boolean deleteVe(String MaCb,String MaGhe) {
+        String sqlCommand = "delete from dbo.Ve where MaCB=? and MaGhe=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, MaCb);
+             ps.setString(2, MaGhe);
+            if (ps.executeUpdate() > 0) {
+                System.out.println("Hủy vé thành công");
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Hủy vé thất bại");
+        return false;
+    }
 }

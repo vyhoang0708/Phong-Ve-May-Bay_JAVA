@@ -12,7 +12,6 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.NhanVien;
-import model.SanBay;
 import model.TaiKhoan;
 
 /**
@@ -72,6 +71,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
         jTextFieldTenDN = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(366, 192));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -199,9 +199,9 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButtonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(37, 37, 37)
+                                        .addGap(32, 32, 32)
                                         .addComponent(jButtonEdit)
-                                        .addGap(27, 27, 27)
+                                        .addGap(32, 32, 32)
                                         .addComponent(jButtonDel))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)

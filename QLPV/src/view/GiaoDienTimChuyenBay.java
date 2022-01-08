@@ -88,7 +88,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tìm Chuyến Bay");
-        setLocation(new java.awt.Point(720, 230));
+        setLocation(new java.awt.Point(0, 0));
         setName("frame8"); // NOI18N
 
         buttonGroup1.add(jRadioButton1);
@@ -352,6 +352,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         jDateChooser1.getAccessibleContext().setAccessibleName("csda");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

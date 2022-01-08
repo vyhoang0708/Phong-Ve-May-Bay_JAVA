@@ -11,6 +11,7 @@ import model.DuongBay;
 import view.GiaoDienNhanVien;
 import static controller.Controller.*;
 import javax.swing.JOptionPane;
+import model.ChuyenBay;
 import model.SanBay;
 import model.TaiKhoan;
 
@@ -288,6 +289,7 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
@@ -414,9 +416,16 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
     private void jButtonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelActionPerformed
          baoLoi.setText("");
           if(jTable1.getSelectedRow()==-1){
-            baoLoi.setText("Vui lòng chọn đường bay");}
-        else
-        {
+            baoLoi.setText("Vui lòng chọn đường bay");
+             return;
+          }
+          for (ChuyenBay cb : arrayListChuyenBay) {
+            if(cb.getDuongBay().getMaDuongBay().equals(jTable1.getValueAt(jTable1.getSelectedRow(), 0))){
+                 baoLoi.setText("Duong Bay Khong The Xoa");
+                 return;
+            }
+                
+        }
           int confirmed = JOptionPane.showConfirmDialog(null,
                         "Xác Nhận Xóa Đường Bay?", "Xác nhận",JOptionPane.YES_NO_OPTION);
 
@@ -425,7 +434,7 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
                      connection.DeleteData.deleteDuongBay((String) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
                      showData();
                 } 
-        }
+        
 // TODO add your handling code here:
     }//GEN-LAST:event_jButtonDelActionPerformed
 

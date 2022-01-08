@@ -468,6 +468,7 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
         // TODO add your handling code here:
         controller.Controller.cb = controller.Controller.arrayListChuyenBay.get(jTable1.getSelectedRow());
         new GiaoDienDSVe().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonDSVeActionPerformed
 
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
@@ -571,6 +572,7 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GiaoDienChuyenBay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

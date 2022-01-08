@@ -52,6 +52,8 @@ public class GiaoDienSuaThongTin extends javax.swing.JFrame {
         jPasswordField3 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
+        setPreferredSize(new java.awt.Dimension(407, 441));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -62,7 +64,7 @@ public class GiaoDienSuaThongTin extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Họ Và Tên");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 53, 59, 15);
+        jLabel2.setBounds(10, 53, 57, 15);
 
         ipname.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -77,12 +79,12 @@ public class GiaoDienSuaThongTin extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Ngày Sinh");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(10, 100, 54, 15);
+        jLabel4.setBounds(10, 100, 52, 15);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("SDT");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(190, 100, 23, 15);
+        jLabel3.setBounds(190, 100, 22, 15);
 
         ipSDT.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -100,7 +102,7 @@ public class GiaoDienSuaThongTin extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Email");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(10, 140, 27, 15);
+        jLabel5.setBounds(10, 140, 26, 15);
 
         ipEmail.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -113,12 +115,12 @@ public class GiaoDienSuaThongTin extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("@gmail.com");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(280, 140, 65, 15);
+        jLabel6.setBounds(280, 140, 64, 15);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Tên Đăng Nhập");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(10, 180, 86, 15);
+        jLabel7.setBounds(10, 180, 83, 15);
 
         jTextField3.setBackground(new java.awt.Color(204, 204, 204));
         getContentPane().add(jTextField3);
@@ -141,7 +143,7 @@ public class GiaoDienSuaThongTin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ipThoat);
-        ipThoat.setBounds(180, 360, 36, 15);
+        ipThoat.setBounds(180, 370, 36, 15);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton1.setText("Lưu Thông Tin");
@@ -151,7 +153,7 @@ public class GiaoDienSuaThongTin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(140, 330, 115, 23);
+        jButton1.setBounds(140, 340, 115, 23);
 
         baoloiname.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(baoloiname);
@@ -181,7 +183,8 @@ public class GiaoDienSuaThongTin extends javax.swing.JFrame {
         getContentPane().add(jPasswordField3);
         jPasswordField3.setBounds(120, 290, 250, 30);
 
-        setBounds(0, 0, 421, 422);
+        pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ipThoatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ipThoatMousePressed

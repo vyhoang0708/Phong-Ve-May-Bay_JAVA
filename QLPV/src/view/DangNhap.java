@@ -42,7 +42,7 @@ public class DangNhap extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đăng Nhập");
-        setLocation(new java.awt.Point(720, 230));
+        setLocation(new java.awt.Point(0, 0));
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -118,6 +118,7 @@ public class DangNhap extends javax.swing.JFrame {
         jLabel2.getAccessibleContext().setAccessibleName("");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed

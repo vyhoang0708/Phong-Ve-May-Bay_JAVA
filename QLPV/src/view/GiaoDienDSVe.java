@@ -42,7 +42,7 @@ public class GiaoDienDSVe extends javax.swing.JFrame {
         }
 	int chiso=1;
         int kichthuoc=80;
-        
+        System.out.println("ALLLAL");
          for(int i=0; ;i=i+kichthuoc+10){
 	  for(int j=1;j<=6;j++)
           {
@@ -102,6 +102,7 @@ public class GiaoDienDSVe extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
 
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -197,11 +198,18 @@ public class GiaoDienDSVe extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        new GiaoDienChuyenBay().setVisible(true);
-        this.dispose();// TODO add your handling code here:
+        
+        if(controller.Controller.tk.getLoaiTaiKhoan().equals("guest")){
+               new GiaoDienChonChuyenBay().setVisible(true);
+        }
+        else{
+            new GiaoDienChuyenBay().setVisible(true);       
+        }
+       this.dispose();
     }//GEN-LAST:event_backActionPerformed
 
     /**

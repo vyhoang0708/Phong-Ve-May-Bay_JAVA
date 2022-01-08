@@ -61,7 +61,7 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đăng Kí");
-        setLocation(new java.awt.Point(600, 200));
+        setLocation(new java.awt.Point(0, 0));
 
         jLabel1.setText("Tên Đăng Nhập");
 
@@ -290,6 +290,7 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ipEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipEmailActionPerformed

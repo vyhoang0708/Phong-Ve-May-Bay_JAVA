@@ -37,6 +37,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quản Lý");
+        setLocation(new java.awt.Point(0, 0));
 
         btnNhanVien.setBackground(new java.awt.Color(153, 153, 255));
         btnNhanVien.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -125,7 +126,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         btnTimChuyen.setBackground(new java.awt.Color(255, 102, 102));
         btnTimChuyen.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnTimChuyen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/7d74215fae51a37bb027798dedc16812-removebg-preview.png"))); // NOI18N
-        btnTimChuyen.setText("Tìm Chuyến Bay");
+        btnTimChuyen.setText("Tìm Vé");
         btnTimChuyen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnTimChuyen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnTimChuyen.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +156,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnDuongBay)
                     .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,16 +168,17 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
                         .addComponent(btnKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnTimChuyen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnChuyenBay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSanBay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMayBay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDuongBay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71))
+                .addGap(51, 51, 51))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
@@ -248,6 +250,8 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GiaoDienQuanLy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

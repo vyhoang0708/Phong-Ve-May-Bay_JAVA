@@ -5,9 +5,11 @@
 package view;
 
 import connection.LoadData;
+import controller.Controller;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.DuongBay;
 import model.SanBay;
 import view.GiaoDienNhanVien;
 
@@ -75,6 +77,7 @@ public class GiaoDienSanBay extends javax.swing.JFrame {
         baoloisb = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -95,8 +98,8 @@ public class GiaoDienSanBay extends javax.swing.JFrame {
         jTable1.setRowHeight(30);
         jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable1MousePressed(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -282,6 +285,7 @@ public class GiaoDienSanBay extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     
@@ -289,15 +293,6 @@ public class GiaoDienSanBay extends javax.swing.JFrame {
         new GiaoDienQuanLy().setVisible(true);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_backActionPerformed
-
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here
-         baoloisb.setText("");
-         int row= jTable1.getSelectedRow();
-         jTextMaSB.setText(jTable1.getValueAt(row, 0).toString());
-         jTextName.setText(jTable1.getValueAt(row, 1).toString());
-         jTextDiaDiem.setText(jTable1.getValueAt(row,2).toString());
-    }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButtonADDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonADDActionPerformed
         // TODO add your handling code here:
@@ -317,15 +312,23 @@ public class GiaoDienSanBay extends javax.swing.JFrame {
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         // TODO add your handling code here:
-        SanBay sb= new SanBay(jTextMaSB.getText(),jTextName.getText(),jTextDiaDiem.getText());
+       
         int row = jTable1.getSelectedRow();
         if(jTextMaSB.getText().equals("") || jTextName.getText().equals("") || jTextDiaDiem.getText().equals(""))
             {
                 baoloisb.setText("Thông tin không được để trống");
                 jButtonEdit.setEnabled(false);
                 jButtonDelete.setEnabled(false);
-            }     
-        else if(jTable1.getSelectedRow()==-1){
+                return;
+            }
+        if(jTextMaSB.getText().length()!=3 )
+        {
+             baoloisb.setText("Mã Chuyến Bay Không Hợp Lệ");
+                return;
+        }
+         jTextMaSB.setText(jTextMaSB.getText().toUpperCase());
+        SanBay sb= new SanBay(jTextMaSB.getText(),jTextName.getText(),jTextDiaDiem.getText());
+        if(jTable1.getSelectedRow()==-1){
             controller.Controller.arrayListSanBay.add(sb);
             jTable1.setEnabled(true);
             dtmSanBay.addRow(new Object[]{sb.getMaSanBay(), sb.getTenSanBay(),sb.getDiaDiem()});
@@ -372,18 +375,26 @@ public class GiaoDienSanBay extends javax.swing.JFrame {
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // TODO add your handling code here:
-        baoloisb.setText("");
+           baoloisb.setText("");
         if(jTable1.getSelectedRow()==-1){
-            baoloisb.setText("Vui lòng chọn sân bay");}
-        else
-        {
+            baoloisb.setText("Vui lòng chọn sân bay");
+            return;
+        }
+       
+        for (DuongBay db : Controller.arrayListDuongBay) {
+                if(db.getMaSanBayDi().equals(jTextMaSB.getText())|| db.getMasanBayDen().equals(jTextMaSB.getText())){
+                 baoloisb.setText("Không Thể Xóa Sân Bay Này");
+                 return;
+                }
+                
+            }
           int confirmed = JOptionPane.showConfirmDialog(null,
                         "Xác Nhận Xóa Sân Bay?", "Xác nhận",JOptionPane.YES_NO_OPTION);
 
                 if (confirmed == JOptionPane.YES_OPTION) {
                      connection.DeleteData.deleteSanBay((String) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
                      loadbang();
-                } 
+                
         }
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
@@ -414,6 +425,15 @@ public class GiaoDienSanBay extends javax.swing.JFrame {
         jButtonDelete.setEnabled(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCancelActionPerformed
+
+    private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
+        // TODO add your handling code here:
+        baoloisb.setText("");
+        int row= jTable1.getSelectedRow();
+        jTextMaSB.setText((String) jTable1.getValueAt(row,0));
+        jTextName.setText((String) jTable1.getValueAt(row,1));
+        jTextDiaDiem.setText((String) jTable1.getValueAt(row,2));
+    }//GEN-LAST:event_jTable1MousePressed
    
     /**
      * @param args the command line arguments
@@ -441,6 +461,10 @@ public class GiaoDienSanBay extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GiaoDienSanBay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

@@ -4,10 +4,13 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd;"/>
+    <Property name="location" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
+      <Point value="[0, 0]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -45,7 +48,7 @@
                   <Component id="btnDuongBay" min="-2" max="-2" attributes="0"/>
                   <Component id="btnThongKe" min="-2" pref="104" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="63" max="32767" attributes="0"/>
+              <EmptySpace pref="66" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -61,14 +64,14 @@
                   </Group>
                   <Component id="btnTimChuyen" alignment="1" min="-2" pref="85" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="59" max="32767" attributes="0"/>
+              <EmptySpace pref="58" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnChuyenBay" alignment="1" min="-2" pref="85" max="-2" attributes="0"/>
                   <Component id="btnSanBay" alignment="1" min="-2" pref="85" max="-2" attributes="0"/>
                   <Component id="btnMayBay" alignment="1" min="-2" pref="85" max="-2" attributes="0"/>
                   <Component id="btnDuongBay" alignment="1" min="-2" pref="85" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -218,7 +221,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/images/7d74215fae51a37bb027798dedc16812-removebg-preview.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="T&#xec;m Chuy&#x1ebf;n Bay"/>
+        <Property name="text" type="java.lang.String" value="T&#xec;m V&#xe9;"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>

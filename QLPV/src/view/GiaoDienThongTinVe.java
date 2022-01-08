@@ -19,10 +19,7 @@ public class GiaoDienThongTinVe extends javax.swing.JFrame {
     public GiaoDienThongTinVe() {
         initComponents();
         Title.setText("Thông Tin Hành Khách " + (controller.Controller.dsVeChon.size()+1));
-        for (String ve : dsGheChon) {
-            System.out.println("==="+ve);
-        }
- 
+       lableMaGhe.setText(dsGheChon.get(dsVeChon.size() ));
         System.out.println(dsGheChon.size());
        if((controller.Controller.dsVeChon.size())== controller.Controller.dsGheChon.size()){
             jButton1.setText("Xác Nhận Đặt Vé");
@@ -48,6 +45,7 @@ public class GiaoDienThongTinVe extends javax.swing.JFrame {
         lableMaGhe = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
 
         jLabel2.setText("SĐT");
 
@@ -125,6 +123,7 @@ public class GiaoDienThongTinVe extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -134,7 +133,6 @@ public class GiaoDienThongTinVe extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         dsVeChon.add(new Ve(cb.getMaChuyenBay(),jTextField1.getText(),jTextField2.getText(),dsGheChon.get(dsVeChon.size() )));
-        System.out.println(dsVeChon.size()+"  "+dsGheChon.size());
         if((dsVeChon.size())<dsGheChon.size()){
              new GiaoDienThongTinVe().setVisible(true);
              this.dispose();

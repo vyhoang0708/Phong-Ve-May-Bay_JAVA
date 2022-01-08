@@ -5,11 +5,13 @@
 package view;
 
 import connection.LoadData;
+import controller.Controller;
 
 import static controller.Controller.arrayListMayBay;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.ChuyenBay;
 import model.MayBay;
 
 
@@ -70,6 +72,7 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
         baoLoi = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
         setResizable(false);
         setSize(new java.awt.Dimension(723, 352));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -174,8 +177,8 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
         ));
         jTable1.setRowHeight(30);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable1MousePressed(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -270,6 +273,7 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
@@ -308,6 +312,7 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
             }
       
         }
+        jTextSHMB.setText(jTextSHMB.getText().toUpperCase());
         if(jTextSHMB.getText().equals("") || jTextHangMB.getText().equals("") || jTextSoGhe.getText().equals("") )
             baoLoi.setText("Vui lòng nhập đầy đủ thông tin đường bay!");
         else{
@@ -347,30 +352,31 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
          
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:\
-        baoLoi.setText("");
-        int row= jTable1.getSelectedRow();
-        jTextSHMB.setText((String) jTable1.getValueAt(row,0));
-        jTextHangMB.setText((String) jTable1.getValueAt(row,1));
-        jTextSoGhe.setText(String.valueOf(jTable1.getValueAt(row,2)));
-        
-    }//GEN-LAST:event_jTable1MouseClicked
-
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // TODO add your handling code here:
         baoLoi.setText("");
+         
         if(jTable1.getSelectedRow()==-1){
-            baoLoi.setText("Vui lòng chọn máy bay");}
+            baoLoi.setText("Vui lòng chọn máy bay");
+            return;
+        }
         else
-        {  
+        {   
+            for (ChuyenBay cb : Controller.arrayListChuyenBay) {
+                if(cb.getSHMB().equals(jTextSHMB.getText())){
+                 baoLoi.setText("Không Thể Xóa Máy Bay Này");
+                 return;
+                }
+                
+            }
+         }    
             int confirmed = JOptionPane.showConfirmDialog(null,
                         "Xác Nhận Xóa Sân Bay?", "Xác nhận",JOptionPane.YES_NO_OPTION);
 
-                if (confirmed == JOptionPane.YES_OPTION) {
+            if (confirmed == JOptionPane.YES_OPTION) {
                         connection.DeleteData.deleteMayBay((String) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
                          showData();
-                } 
+                
        
         }
     }//GEN-LAST:event_jButtonDeleteActionPerformed
@@ -418,6 +424,16 @@ public class GiaoDienMayBay extends javax.swing.JFrame {
     private void jTextSoGheMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextSoGheMouseClicked
         baoLoi.setText("");// TODO add your handling code here:
     }//GEN-LAST:event_jTextSoGheMouseClicked
+
+    private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
+        // TODO add your handling code here:
+         baoLoi.setText("");
+     
+        int row= jTable1.getSelectedRow();
+        jTextSHMB.setText((String) jTable1.getValueAt(row,0));
+        jTextHangMB.setText((String) jTable1.getValueAt(row,1));
+        jTextSoGhe.setText(String.valueOf(jTable1.getValueAt(row,2)));
+    }//GEN-LAST:event_jTable1MousePressed
 
     /**
      * @param args the command line arguments

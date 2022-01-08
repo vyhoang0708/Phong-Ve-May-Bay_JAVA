@@ -122,4 +122,41 @@ public class UpdateData {
         System.out.println("Hủy chuyến bay thất bại");
         return false;
     }
+      public static boolean doiMatKhau(TaiKhoan tk, String mk ) {
+        String sqlCommand = "update dbo.TAIKHOAN set   MATKHAU = ? " + " where tenDangNhap=?"  ;
+         
+        try { 
+            DataConnection.createStatement();
+            PreparedStatement  ps = DataConnection.connection.prepareStatement(sqlCommand);
+ 
+            ps.setString(1, mk );
+            ps.setString(2, tk.getTenDangNhap());
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Đổi mật khẩu thất bại");
+        return false;
+    }
+     public static boolean updateKhachHang(KhachHang kh) {
+        String sqlCommand = "update dbo.KHACHHANG set  HOVATEN=? , ngaysinh = ?, email=?" + " where sdt=?"  ;
+         
+        try { 
+            DataConnection.createStatement();
+            PreparedStatement  ps = DataConnection.connection.prepareStatement(sqlCommand);
+ 
+            ps.setString(1, kh.getTenKhachHang());
+            System.out.println(kh.getTenKhachHang());
+            ps.setDate(2, kh.getNgaySinh());
+            ps.setString(3, kh.getEmail());
+            ps.setString(4, kh.getSDT());
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("sửa thông tin thất bại");
+        return false;
+    }
 }

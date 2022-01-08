@@ -419,7 +419,7 @@ public class GiaoDienChuyenBay extends javax.swing.JFrame {
                                 Integer.parseInt(jComboBox_GioDi1.getSelectedItem().toString()),
                                 Integer.parseInt(jComboBox_PhutDi.getSelectedItem().toString()),
                             0),0);
-             System.out.println(jComboBoxSHMB.getSelectedItem().toString());
+            
 //            for (int i = 1; i <= cb.getSoGhe(); i++) {
 //                Ghe ghe= new Ghe(String.valueOf(i),cb.getMaChuyenBay(),false);
 //                connection.InsertData.insertGhe(ghe);

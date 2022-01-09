@@ -170,6 +170,9 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable1MousePressed(evt);
+            }
         });
         jScrollPane2.setViewportView(jTable1);
 
@@ -307,13 +310,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        baoloi.setText("");// TODO add your handling code here:
-        System.out.println("s");
-        int row= jTable1.getSelectedRow();
-        jTextFieldName.setText((String) jTable1.getValueAt(row,0));
-        jTextFieldSDT.setText((String) jTable1.getValueAt(row,1));
-        jTextFieldTenDN.setText((String) jTable1.getValueAt(row, 2));
-        jTextFieldLuong.setText(String.valueOf(jTable1.getValueAt(row,3)));
+       
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
@@ -461,6 +458,16 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
     private void jTextFieldTenDNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldTenDNMouseClicked
         baoloi.setText("");// TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTenDNMouseClicked
+
+    private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
+        // TODO add your handling code here:
+         baoloi.setText("");// TODO add your handling code here:
+        int row= jTable1.getSelectedRow();
+        jTextFieldName.setText((String) jTable1.getValueAt(row,0));
+        jTextFieldSDT.setText((String) jTable1.getValueAt(row,1));
+        jTextFieldTenDN.setText((String) jTable1.getValueAt(row, 2));
+        jTextFieldLuong.setText(String.valueOf(jTable1.getValueAt(row,3)));
+    }//GEN-LAST:event_jTable1MousePressed
 
     /**
      * @param args the command line arguments

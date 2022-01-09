@@ -15,6 +15,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
      */
     public GiaoDienQuanLy() {
         initComponents();
+         System.out.println(controller.Controller.tk.getLoaiTaiKhoan());
         if(controller.Controller.tk.getLoaiTaiKhoan().equals("staff")){
               btnNhanVien.setEnabled(false);
         }
@@ -225,7 +226,8 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMayBayActionPerformed
 
     private void btnTimChuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimChuyenActionPerformed
-           new GiaoDienTimChuyenBay().setVisible(true);
+        
+        new GiaoDienTimChuyenBay().setVisible(true);
            this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTimChuyenActionPerformed

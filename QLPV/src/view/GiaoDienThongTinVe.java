@@ -7,6 +7,7 @@ package view;
 import connection.LoadData;
 import model.Ve;
 import static controller.Controller.*;
+import model.TaiKhoan;
 
 /**
  *
@@ -165,7 +166,7 @@ public class GiaoDienThongTinVe extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if(checkIP()){
-                dsVeChon.add(new Ve(cb.getMaChuyenBay(),jTextFieldSDT.getText(),jTextFieldName.getText(),dsGheChon.get(dsVeChon.size() )));
+                dsVeChon.add(new Ve(cb.getMaChuyenBay(),jTextFieldName.getText(),jTextFieldSDT.getText(),dsGheChon.get(dsVeChon.size() )));
                 if((dsVeChon.size())<dsGheChon.size()){
                      new GiaoDienThongTinVe().setVisible(true);
                      this.dispose();
@@ -177,6 +178,13 @@ public class GiaoDienThongTinVe extends javax.swing.JFrame {
                         connection.UpdateData.capNhatHetVe(cb.getMaChuyenBay());
                     }
                     dsVeChon.removeAll(dsVeChon);
+                    arrayListTimChuyenBay.remove(arrayListTimChuyenBay);
+                     for (TaiKhoan taiKhoan : arrayListTaiKhoan) {
+                        if(tk.getTenDangNhap().equals(taiKhoan.getTenDangNhap())){
+                            controller.Controller.tk=taiKhoan;
+                            break;
+                        }       
+                    }
                     new GiaoDienTimChuyenBay().setVisible(true);
                     this.dispose();
                 }

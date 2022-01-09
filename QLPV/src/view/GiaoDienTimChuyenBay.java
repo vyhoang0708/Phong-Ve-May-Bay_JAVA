@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.ChuyenBay;
 import static controller.Controller.*;
+import model.TaiKhoan;
 
 
 /**
@@ -33,6 +34,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
        }
        else{
             jPanel1.setVisible(false);
+            controller.Controller.tk.setLoaiTaiKhoan("guest");
        }
        String date = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
      
@@ -227,6 +229,11 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
         jButton7.setBackground(new java.awt.Color(255, 255, 255));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -250,7 +257,8 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel12)
-                            .addComponent(jLabel14))
+                            .addComponent(jLabel14)
+                            .addComponent(baoLoi, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23)
                         .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -277,9 +285,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                                 .addGap(32, 32, 32)
                                 .addComponent(jLabel13)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(baoLoi, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
@@ -357,9 +363,9 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                         .addComponent(jLabel13)))
                 .addGap(14, 14, 14)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(baoLoi, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(14, 14, 14))
         );
 
         jDateChooser1.getAccessibleContext().setAccessibleName("csda");
@@ -396,21 +402,20 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
             controller.Controller.soLuongVeChon=soGheNguoiLon+soGheTreEm;
             controller.Controller.arrayListTimChuyenBay.removeAll(controller.Controller.arrayListTimChuyenBay);          
            for (ChuyenBay cb: arrayListChuyenBay) {
-             if(cb.getDuongBay().getMaDuongBay().equals(maDuongBayDi) && cb.getNgayBay().equals(ngayDi)){
+             if(cb.getTrangThai()==ChuyenBay.CONVE &&
+                 cb.getDuongBay().getMaDuongBay().equals(maDuongBayDi) && cb.getNgayBay().equals(ngayDi)){
                  
-                 if(cb.getSoGheTrong()<(soGheNguoiLon+soGheTreEm)){
-                    baoLoi.setText("Khong đủ ghế");
-                    return;
-                 }
-                 controller.Controller.arrayListTimChuyenBay.add(cb);
+                 if(cb.getSoGheTrong()<(soGheNguoiLon+soGheTreEm))
+                    baoLoi.setText("Không đủ ghế");
+                 else
+                    controller.Controller.arrayListTimChuyenBay.add(cb);
              }
         }
            if(!controller.Controller.arrayListTimChuyenBay.isEmpty()){
               new GiaoDienChonChuyenBay().setVisible(true);
              this.dispose();
            }else
-                baoLoi.setText("Khong Tim Thay Chuyen Bay Hop Le");
-
+                baoLoi.setText("Không có chuyến bay phù hợp!");
          
            
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -438,6 +443,18 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         new DangNhap().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel4MousePressed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        for (TaiKhoan taiKhoan : arrayListTaiKhoan) {
+            if(tk.getTenDangNhap().equals(taiKhoan.getTenDangNhap())){
+                controller.Controller.tk=taiKhoan;
+                break;
+            }       
+        }
+        new GiaoDienQuanLy().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments

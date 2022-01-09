@@ -125,9 +125,7 @@ public class LoadData {
                         rs.getInt(6));
                 cb.setArrayListVe(loadTableVe(cb.getMaChuyenBay().trim()));
                 if(cb.getTrangThai()==ChuyenBay.CONVE||cb.getTrangThai()==ChuyenBay.HETVE){
-                      Date tmp=new Date(cb.getNgayBay().getYear(), cb.getNgayBay().getMonth(), cb.getNgayBay().getDate(),
-                               cb.getGioBay().getHours(), cb.getGioBay().getMinutes());
-                       if(datenow.after(tmp) ) {
+                       if(datenow.after(cb.getCBTime()) ) {
                            connection.UpdateData.capNhatHoanTat(cb.getMaChuyenBay());
                            cb.setTrangThai(ChuyenBay.HOANTAT);
                     }

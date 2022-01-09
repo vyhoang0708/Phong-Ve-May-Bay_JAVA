@@ -109,8 +109,14 @@ public class ChuyenBay {
          }
         return -1;
     }
+     
     public int getSoGheTrong() {
         return getSoGhe()-arrayListVe.size();
         }
+    
+    public java.util.Date getCBTime(){
+            return new java.util.Date(this.ngayBay.getYear(), this.ngayBay.getMonth(),this.ngayBay.getDate(),
+                               this.gioBay.getHours(), this.gioBay.getMinutes());
+    }
     
 }

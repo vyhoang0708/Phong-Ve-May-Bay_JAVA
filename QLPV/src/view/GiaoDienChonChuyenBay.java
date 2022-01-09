@@ -4,10 +4,13 @@
  */
 package view;
 
+import static controller.Controller.arrayListTaiKhoan;
+import static controller.Controller.tk;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
 import model.ChuyenBay;
+import model.TaiKhoan;
 
 /**
  *
@@ -125,6 +128,12 @@ public class GiaoDienChonChuyenBay extends javax.swing.JFrame {
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
+         for (TaiKhoan taiKhoan : arrayListTaiKhoan) {
+            if(tk.getTenDangNhap().equals(taiKhoan.getTenDangNhap())){
+                controller.Controller.tk=taiKhoan;
+                break;
+            }       
+        }
         new GiaoDienTimChuyenBay().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backActionPerformed

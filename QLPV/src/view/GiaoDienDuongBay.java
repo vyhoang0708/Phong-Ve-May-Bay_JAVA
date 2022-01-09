@@ -102,8 +102,8 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
         ));
         jTable1.setRowHeight(30);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable1MousePressed(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -381,19 +381,6 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
         jButtonDel.setEnabled(false);
     }//GEN-LAST:event_jButtonAddActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
-        baoLoi.setText("");
-        for (SanBay sb: arrayListSanBay) {
-            if(sb.getMaSanBay().equals(jTable1.getValueAt(jTable1.getSelectedRow(), 1)))
-                jComboBox1.setSelectedIndex(arrayListSanBay.indexOf(sb));
-            if(sb.getMaSanBay().equals(jTable1.getValueAt(jTable1.getSelectedRow(), 2)))
-                jComboBox2.setSelectedIndex(arrayListSanBay.indexOf(sb));
-        }
-   
-        jTextField5.setText(String.valueOf(arrayListDuongBay.get(jTable1.getSelectedRow()).getKhoangCach()));
-    }//GEN-LAST:event_jTable1MouseClicked
-
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         baoLoi.setText("");// TODO add your handling code here:
     }//GEN-LAST:event_formMouseClicked
@@ -455,6 +442,19 @@ public class GiaoDienDuongBay extends javax.swing.JFrame {
     private void jTextField5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField5MouseClicked
         baoLoi.setText("");// TODO add your handling code here:
     }//GEN-LAST:event_jTextField5MouseClicked
+
+    private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
+        // TODO add your handling code here:
+         baoLoi.setText("");
+        for (SanBay sb: arrayListSanBay) {
+            if(sb.getMaSanBay().equals(jTable1.getValueAt(jTable1.getSelectedRow(), 1)))
+                jComboBox1.setSelectedIndex(arrayListSanBay.indexOf(sb));
+            if(sb.getMaSanBay().equals(jTable1.getValueAt(jTable1.getSelectedRow(), 2)))
+                jComboBox2.setSelectedIndex(arrayListSanBay.indexOf(sb));
+        }
+   
+        jTextField5.setText(String.valueOf(arrayListDuongBay.get(jTable1.getSelectedRow()).getKhoangCach()));
+    }//GEN-LAST:event_jTable1MousePressed
 
     /**
      * @param args the command line arguments

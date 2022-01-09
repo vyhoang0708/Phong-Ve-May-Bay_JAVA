@@ -112,7 +112,6 @@ public class UpdateData {
             PreparedStatement  ps = DataConnection.connection.prepareStatement(sqlCommand);
  
             ps.setString(1, kh.getTenKhachHang());
-            System.out.println(kh.getTenKhachHang());
             ps.setDate(2, kh.getNgaySinh());
             ps.setString(3, kh.getEmail());
             ps.setString(4, kh.getSDT());

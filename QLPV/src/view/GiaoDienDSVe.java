@@ -1,18 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import controller.Controller;
-import java.awt.Button;
 import java.awt.Color;
-import java.awt.Label;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import model.ChuyenBay;
@@ -23,20 +13,16 @@ import model.Ve;
  * @author PC
  */
 public class GiaoDienDSVe extends javax.swing.JFrame {
-
-    /**
-     * Creates new form GiaoDienDSVe
-     */
+    
     private  ArrayList<JButton> listGhe= new ArrayList<JButton>();
     public GiaoDienDSVe() {      
 
-        
         initComponents();
         controller.Controller.dsGheChon.removeAll(controller.Controller.dsGheChon);    
         ArrayList<String> mapGhe= new ArrayList<String>();
-        myTitle.setText("Sơ Đồ Vé Chuyến Bay "+controller.Controller.cb.getMaChuyenBay());
-               
-       
+        myTitle.setText("Sơ Đồ Vé Chuyến Bay "+controller.Controller.cb.getMaChuyenBay()); 
+        if(Controller.cb.getTrangThai()==ChuyenBay.HUYCHUYEN ||Controller.cb.getTrangThai()==ChuyenBay.HOANTAT )
+            jButtonHuyVe.setVisible(false);
         int soGhe= controller.Controller.cb.getSoGhe();
         thongTinVe.setVisible(false);
         mapGhe.add("");
@@ -108,7 +94,7 @@ public class GiaoDienDSVe extends javax.swing.JFrame {
             for (Ve ve: controller.Controller.cb.getArrayListVe()) {
                 if(btn.getText().equals(ve.getMaGhe())){
                    jLabelmaGhe.setText(ve.getMaGhe());
-                   lbtenKhachHang.setText(ve.getTenHanhKhach());
+                   lbTenKhachHang.setText(ve.getTenHanhKhach());
                    lbSDT.setText(ve.getsDT());
                     return;
                 }
@@ -136,11 +122,11 @@ public class GiaoDienDSVe extends javax.swing.JFrame {
         thongTinVe = new javax.swing.JPanel();
         lbVe = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        lbtenKhachHang = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        lbSDT = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        jButtonHuyVe = new javax.swing.JButton();
         jLabelmaGhe = new javax.swing.JLabel();
+        lbTenKhachHang = new javax.swing.JTextField();
+        lbSDT = new javax.swing.JTextField();
         chuThich = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -186,23 +172,28 @@ public class GiaoDienDSVe extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 3, 10)); // NOI18N
         jLabel7.setText("Tên Khách Hàng");
 
-        lbtenKhachHang.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-
         jLabel9.setFont(new java.awt.Font("Tahoma", 3, 10)); // NOI18N
         jLabel9.setText("SDT");
 
-        lbSDT.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-
-        jButton4.setBackground(new java.awt.Color(255, 102, 102));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jButton4.setText("Hủy Vé");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonHuyVe.setBackground(new java.awt.Color(255, 102, 102));
+        jButtonHuyVe.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jButtonHuyVe.setText("Hủy Vé");
+        jButtonHuyVe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonHuyVeActionPerformed(evt);
             }
         });
 
         jLabelmaGhe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        lbTenKhachHang.setEnabled(false);
+        lbTenKhachHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lbTenKhachHangActionPerformed(evt);
+            }
+        });
+
+        lbSDT.setEnabled(false);
 
         javax.swing.GroupLayout thongTinVeLayout = new javax.swing.GroupLayout(thongTinVe);
         thongTinVe.setLayout(thongTinVeLayout);
@@ -212,26 +203,25 @@ public class GiaoDienDSVe extends javax.swing.JFrame {
                 .addGroup(thongTinVeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(thongTinVeLayout.createSequentialGroup()
+                        .addGroup(thongTinVeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(thongTinVeLayout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(lbVe, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelmaGhe, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(thongTinVeLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(jButtonHuyVe))
+                            .addGroup(thongTinVeLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 18, Short.MAX_VALUE))
+                    .addGroup(thongTinVeLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(thongTinVeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbtenKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(thongTinVeLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(lbSDT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(thongTinVeLayout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(thongTinVeLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(lbVe, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelmaGhe, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 18, Short.MAX_VALUE)))
+                            .addComponent(lbTenKhachHang)
+                            .addComponent(lbSDT))))
                 .addContainerGap())
-            .addGroup(thongTinVeLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jButton4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         thongTinVeLayout.setVerticalGroup(
             thongTinVeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,14 +232,14 @@ public class GiaoDienDSVe extends javax.swing.JFrame {
                     .addComponent(jLabelmaGhe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbTenKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbtenKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
+                .addGap(22, 22, 22)
+                .addComponent(jButtonHuyVe)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -362,7 +352,7 @@ public class GiaoDienDSVe extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_backActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonHuyVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHuyVeActionPerformed
         // TODO add your handling code here:
          int confirmed = JOptionPane.showConfirmDialog(null,
                         "Xác Nhận Hủy Vé ?", "Xác nhận",JOptionPane.YES_NO_OPTION);
@@ -374,7 +364,11 @@ public class GiaoDienDSVe extends javax.swing.JFrame {
                  if(controller.Controller.cb.getTrangThai()==ChuyenBay.HETVE)
                           connection.UpdateData.capNhatConVe(controller.Controller.cb.getMaChuyenBay());
             }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonHuyVeActionPerformed
+
+    private void lbTenKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbTenKhachHangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbTenKhachHangActionPerformed
 
     /**
      * @param args the command line arguments
@@ -417,7 +411,7 @@ public class GiaoDienDSVe extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonHuyVe;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -426,9 +420,9 @@ public class GiaoDienDSVe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelmaGhe;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lbSDT;
+    private javax.swing.JTextField lbSDT;
+    private javax.swing.JTextField lbTenKhachHang;
     private javax.swing.JLabel lbVe;
-    private javax.swing.JLabel lbtenKhachHang;
     private javax.swing.JLabel myTitle;
     private javax.swing.JPanel thongTinVe;
     // End of variables declaration//GEN-END:variables
